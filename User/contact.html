@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../Images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background-color: #F3F2EF;
+      }
+      header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          background-color: white;
+      }
+      .logo img {
+          width: 100px;
+          height: auto;
+          margin-left: 40px;
+      }
+      nav ul {
+          list-style-type: none;
+          margin-right: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li {
+          margin-left: 50px;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a {
+          color: black;
+          text-decoration: none;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a img {
+          width: 35px;
+          height: 35px; 
+          margin-right: 5px;
+      }
+      nav ul li a:hover {
+          text-decoration: none;
+      }
+      .active {
+        color: #006633;
+        font-weight: bold;
+      }
+        .header nav a {
+            color: #f8f8f8;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .inquiries {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .inquiries h1 {
+            font-size: 47px;
+            color: #003399;
+            font-weight: bold;
+            margin-bottom: -20px;
+            margin-left: 5%;
+        }
+
+        .container {
+            margin-left: 5%;
+            padding: 20px;
+        }
+
+        .inquiries-section {
+            display: flex;
+            margin-top: 30px;
+            gap: 50px;
+            margin-right: 5%;
+        }
+
+        .inquiry-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #222689;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            padding: 10px;
+        }
+        
+        .inquiry-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-columns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-column {
+            flex: 1;
+        }
+
+        .inquiry-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: normal;
+            color: black;
+            margin-left: 5%;
+        }
+
+        .form-column input[type="tel"],
+        .form-column input[type="number"],
+        .form-column input[type="text"],
+        .form-column input[type="email"],
+        .form-column select {
+            width: 90%;
+            padding: 10px;
+            max-width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 5%;
+            box-sizing: border-box;
+            background-color: white;
+            font-size: 16px;
+            color: black;
+        }
+
+        .form-column input:focus,
+        .form-column select:focus {
+            border-color: #a3925b; 
+            outline: none; 
+            box-shadow: 0 0 5px rgba(162, 146, 91, 0.5); 
+        }
+
+        @media (max-width: 1000px) {
+            .form-columns {
+                flex-direction: column;
+            }
+
+            .form-column {
+                margin-left: 0; 
+            }
+        }
+
+        .form-column textarea {
+            width: 90%; 
+            padding: 10px;
+            max-width: 100%; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            margin-left: 5%; 
+            box-sizing: border-box; 
+            background-color: white; 
+            font-size: 16px; 
+            color: black; 
+            font-family: Arial;
+        }
+
+        .form-column textarea:focus {
+            border-color: #a3925b; 
+            outline: none; 
+            box-shadow: 0 0 5px rgba(162, 146, 91, 0.5); 
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start; 
+            gap: 5px; 
+            font-size: 14px;
+            max-width: 90%;
+            line-height: 1.5;
+            margin-top: 10px;
+            margin-left: 5%;
+        }
+
+        .terms label {
+            text-align: justify;
+        }
+
+        .inquiry-form .buttons {
+            display: flex;
+            justify-content: center; 
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .inquiry-form .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #222689;
+            transition: background-color 0.3s ease;
+        }
+
+        .inquiry-form .buttons button:hover {
+            background-color: #222689; 
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            color: #222689;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .contact-info p {
+            font-size: 13px;
+            color: black;
+            font-weight: normal;
+        }
+
+        .contact-info h4 {
+            font-size: 18px;
+            color: black;
+            text-decoration: underline;
+        }
+
+        .contact-info iframe {
+            margin-top: 5%;
+        }   
+        .breadcrumb {
+            padding: 10px 40px;
+            font-size: 20px;
+            text-align: right;
+            margin-right: 50px;
+            margin-top: 20px;
+        }
+
+        .breadcrumb a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .breadcrumb span {
+            color: #222689;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><img src="../Images/logo.png" alt="Logo"></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+                <li><a href="properties.html">PROPERTIES</a></li>
+                <li><a href="signup.html"><img src="../Images/usericon.png" alt="User Icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="home.html">Home</a> / <span>Contact</span>
+    </div>
+
+    <div class="inquiries">
+        <h1>INQUIRIES</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Inquiries Section -->
+        <div class="inquiries-section">
+            <!-- Inquiry Form -->
+<div class="inquiry-form">
+    <h2>Inner Sparc Inquiry Form</h2>
+    <form>
+        <div class="form-columns">
+            <div class="form-column">
+                <label for="firstName">First Name<span style="color: red;">*</span></label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+
+                <label for="lastName">Last Name<span style="color: red;">*</span></label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+
+                <label for="email">Email<span style="color: red;">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="phone">Phone Number<span style="color: red;">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+                <label for="budget">Budget Range<span style="color: red;">*</span></label>
+                <input type="number" id="budget" name="budget" placeholder="Enter your budget" min="0" step="any">
+            </div>
+
+            <div class="form-column">
+                <label for="subject">Subject<span style="color: red;">*</span></label>
+                <select id="subject" name="subject">
+                    <option value="">—Select Subject—</option>
+                    <option value="Property Inquiry">Property Inquiry</option>
+                    <option value="Pricing Information">Pricing Information</option>
+                </select>
+                
+                <label for="property">Type of Property<span style="color: red;">*</span></label>
+                <select id="property" name="property">
+                    <option value="">—Select Property Type—</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Condominium">Condominium</option>
+                    <option value="Residential">Residential</option>
+                </select>
+
+                <label for="message">Message<span style="color: red;">*</span></label>
+                <textarea id="message" name="message" placeholder="Type your message here" rows="4" required></textarea>
+
+            </div>
+        </div>
+
+        <div class="terms">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">
+                I acknowledge that I have read and understand the <strong>Terms and Conditions</strong> of the InnerSparc Realty website. I consent to the collection, storage, use, disclosure, and processing of my information by InnerSparc Realty, including authorized third parties, affiliates, and respective personnel, for purposes as outlined in the policy.
+            </label>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="send">SEND</button>
+            <button type="reset" class="reset">RESET</button>
+        </div>
+    </form>
+</div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <h4><strong>ADDRESS</strong></h4>
+                <p>Blk 26 Lot 4 Phase 3, Avida Residences Sta. Catalina, Brgy. Salawag Dasmarinas, Cavite, Philippines</p>
+                <h4>CONTACT DETAILS:</h4>
+                <p><strong>Landline:</strong> (046)458-0706</p>
+                <p><strong>Mobile:</strong> 0966-953-3188</p>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d82738.8651551765!2d120.98636191765954!3d14.365561832534324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d42a4c3f26db%3A0x334ccc6d1972f9e5!2sAvida%20Residences%20Santa%20Catalina!5e0!3m2!1sen!2sus!4v1730800241404!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../Images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+     body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background-color: #F3F2EF;
+      }
+      header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          background-color: white;
+      }
+      .logo img {
+          width: 100px;
+          height: auto;
+          margin-left: 40px;
+      }
+      nav ul {
+          list-style-type: none;
+          margin-right: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li {
+          margin-left: 50px;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a {
+          color: black;
+          text-decoration: none;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a img {
+          width: 35px;
+          height: 35px; 
+          margin-right: 5px;
+      }
+      nav ul li a:hover {
+          text-decoration: none;
+      }
+
+      .about-image {
+          width: 100%; 
+          height: auto; 
+      }      
+      .image-container {
+          position: relative;
+          text-align: center;
+      }
+      .breadcrumb {
+          padding: 10px 40px;
+          font-size: 20px;
+          text-align: right;
+          margin-right: 50px;
+          margin-top: 20px;
+      }
+      .breadcrumb a {
+          color: #000;
+          text-decoration: none;
+      }
+      .breadcrumb a:hover {
+          text-decoration: none;
+          color: #333;
+      }
+      .breadcrumb span {
+          color: #003399;
+      }
+      .mission-container {
+          display: flex;
+          align-items: center;
+          padding: 50px;
+      }
+
+      .mission-image {
+          flex: 1;
+          text-align: center;
+      }
+
+      .mission-image img {
+          width: 95%;
+          height: auto;
+          margin-right: 15%;
+      }
+
+      .mission-text {
+          flex: 1;
+          padding-left: 20px;
+      }
+
+      .mission-text h2 {
+          font-size: 40px;
+          font-weight: bold;
+          margin-top: 2px;
+          color: #333;
+      }
+
+      .mission-text p {
+          margin-top: -15px;
+          font-size: 20px;
+          line-height: 1.7;
+          color: black;
+          margin-right: 2%;
+      }
+
+      .core {
+          text-align: center;
+          font-size: 30px;
+          font-weight: bold;
+          margin-top: 30px;
+          color: black; 
+          text-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+      .sparc-container {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+          margin: 50px;
+      }
+
+      .sparc-box {
+          width: 20%;
+          height: auto;
+          margin: 0 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          background-color: #F3F2EF; 
+          position: relative;
+          padding: 80px 20px;
+      }
+
+.sparc-box:nth-child(1) {
+    border: 4px solid #ff6600; 
+}
+
+.sparc-box:nth-child(2) {
+    border: 4px solid #006633;
+}
+
+.sparc-box:nth-child(3) {
+    border: 4px solid #000066;
+}
+
+.sparc-box:nth-child(4) {
+    border: 4px solid #003399;
+}
+
+.sparc-box:nth-child(5) {
+    border: 4px solid #330066;
+}
+
+
+
+
+      .core-value-title {
+          font-size: 30px;
+          font-weight: bold;
+          line-height: 50px;
+      }
+
+.rect-vision {
+    width: 100%;
+    height: auto;
+    background-color: #ff9933;
+    margin-top: 5%;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    padding-top: 50px;
+    position: relative; /* Keep relative positioning here */
+}
+.vision-images-container img:nth-child(1) {
+    border: 4px solid #006633;
+}
+
+.vision-images-container img:nth-child(2) {
+    border: 4px solid #003399;
+}
+
+.vision-images-container img:nth-child(3) {
+    border: 4px solid #006633;
+}
+
+.vision-images-container img:nth-child(4) {
+    border: 3px solid #003399;
+}
+
+      .vision-title {
+          font-size: 28px;
+          font-weight: bold;
+          margin: 0;
+          text-align: center;
+          color: white;
+      }
+
+      .vision-description {
+          font-size: 20px;
+          text-align: center;
+          width: 80%;
+          line-height: 1.7;
+          margin-top: 30px;
+          color: white;
+      }
+      .vision-images-container {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+          width: 90%;
+          margin-top: 20px;
+          align-items: center;
+          justify-items: center;
+      }
+
+      .vision-images-container img {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          position: relative;
+        }
+      .starts-title {
+          font-size: 32px;
+          font-weight: bold;
+          text-align: center;
+          color: white;
+      }
+      .starts-desc {
+          font-size: 15px;
+          text-align: center;
+          margin-top: -40px;
+          color: white;
+          margin-bottom: 8%;
+          position: relative;
+      }
+
+.key-image-container {
+    width: 100%; /* Adjust width as needed */
+    text-align: center;
+    margin-top: -70px; /* Adjust this to create space above the footer */
+    z-index: 10;
+}
+      .key-image-container .overlay-image-key {
+          width: 100%;
+          height: 600px;
+          border-top-left-radius: 80px;
+          border-top-right-radius: 80px;
+      }
+.overlay-image-key {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+      .overlay-image-key {
+          width: 100%;
+          height: 600px;
+          border-top-left-radius: 80px;
+          border-top-right-radius: 80px;
+      }
+
+      .overlay-content-key {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          width: calc(100% - 40px);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .overlay-text-key {
+          font-size: 55px;
+          font-weight: bold;
+          color: white;
+          margin: 3%;
+          text-align: justify;
+          text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .overlay-button-key {
+          padding: 20px 20px;
+          font-size: 22px;
+          color: white;
+          background-color: white;
+          border: none;
+          border-radius: 15px;
+          margin: 2%;
+          cursor: pointer;
+      }
+
+      .overlay-button-key:hover {
+          background-color: #33cc33;
+      }
+      .overlay-button-key a{
+        text-decoration: none;
+        color: black;
+      }
+         footer {
+          color: black;
+          text-align: center;
+          padding: 20px 0;
+          margin-top: -20px;
+      }
+      .footer-img {
+          position: relative;
+          text-align: center;
+      }
+      .footer-img img {
+          width: 100%;
+          height: auto;
+          margin-bottom: -10px;
+      }
+      .footer-bottom {
+          margin-bottom: -50px;
+          background-color: white;
+          color: white;
+          padding: 10px 0;        
+      }
+      .footer-bottom p {
+          margin-bottom: 10px;
+          font-size: 1.1rem;
+          color: black;
+      }
+      .footer-bottom nav ul {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 20px;
+          margin-bottom: 40px;
+          text-transform: uppercase;
+      }
+      .footer-bottom nav ul li a {
+          text-decoration: none;
+      }
+      .footer-bottom address {
+          font-style: normal;
+          margin-bottom: 15px;
+          color: black;
+      }
+      .footer-bottom .copyright {
+          font-size: 0.8rem;
+      }
+      .active {
+        color: #006633;
+        font-weight: bold;
+      }
+
+
+
+  </style>
+
+</head>
+
+<body>
+  
+<header>
+    <div class="logo"><img src="../Images/logo.png" alt="Logo"></div>
+    <nav>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="about.html" class="active">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="properties.html">PROPERTIES</a></li>
+            <li><a href="signup.html"><img src="../Images/usericon.png" alt="User Icon"></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<div class="image-container">
+    <img src="../Images/bout1.png" alt="Home Image" class="about-image">
+</div>
+
+<div class="breadcrumb">
+    <a href="home.html">Home</a> / <span>About</span>
+</div>
+
+
+<div class="mission-container">
+    <div class="mission-image">
+        <img src="../Images/sparc.jpg">
+    </div>
+    <div class="mission-text">
+        <h2>MISSION</h2>
+        <p>
+            Our mission is to empower Filipino families and individuals by providing exceptional real estate services that cater to their unique needs and aspirations. We strive to deliver innovative solutions, unparalleled customer service, and a deep understanding of local communities. Through our dedication to integrity and excellence, we aim to build lasting relationships and contribute to the fulfillment of home ownership dreams across the Philippines.
+        </p>
+    </div>
+</div>
+
+<p class="core">CORE VALUES</p>
+<div class="sparc-container">
+    <div class="sparc-box">
+        <div class="text-wrapper">
+            <span class="overlay-text"><span class="core-value-title">Service</span><br>Delivering exceptional service with dedication, ensuring that every client's needs are met with care and commitment.</span>
+        </div>
+    </div>
+    <div class="sparc-box">
+        <div class="text-wrapper">
+            <span class="overlay-text"><span class="core-value-title">Professionalism</span><br>Upholding the highest standards in every interaction, ensuring that trust and respect are at the forefront of our relationships.</span>
+        </div>
+    </div>
+    <div class="sparc-box">
+        <div class="text-wrapper">
+            <span class="overlay-text"><span class="core-value-title">Attitude</span><br>Fostering a positive and proactive mindset, approaching every challenge with enthusiasm and a can-do spirit.</span>
+        </div>
+    </div>
+    <div class="sparc-box">
+        <div class="text-wrapper">
+            <span class="overlay-text"><span class="core-value-title">Relationship</span><br>Building strong and lasting connections with clients, partners, and communities, recognizing the value of each relationship.</span>
+        </div>
+    </div>
+    <div class="sparc-box">
+        <div class="text-wrapper">
+            <span class="overlay-text"><span class="core-value-title">Champion</span><br>Striving to be a leader in the industry, continually pushing boundaries and setting new standards for excellence.</span>
+        </div>
+    </div>
+</div>
+
+<div class="rect-vision">
+    <h4 class="vision-title">OUR VISION</h4>
+    <p class="vision-description">Inner Sparc Realty Corporation envisions a future where every Filipino family easily finds their dream home through accessible, affordable, and personalized real estate experiences.</p>
+    
+    <div class="vision-images-container">
+        <img src="../Images/kite.jpg" alt="Image 1">
+        <img src="../Images/doggos.jpg" alt="Image 2">
+        <img src="../Images/karton.jpg" alt="Image 3">
+        <img src="../Images/run.jpg" alt="Image 4">
+    </div>
+    <h4 class="starts-title"> And it starts NOW.</h4>
+    <p class="starts-desc"> Looking for the right home?</p>
+
+    <div class="key-image-container">
+        <img src="../Images/susi.jpg" class="overlay-image-key">
+        <div class="overlay-content-key">
+            <span class="overlay-text-key">Discover the property<br> that's right for you.</span>
+            <button class="overlay-button-key"><a href="properties.html">EXPLORE ALL PROPERTIES</a></button>
+        </div>
+    </div>
+</div>
+<footer>
+
+    <div class="footer-bottom">
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="termsandcondition.html">Terms and Conditions</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <address>
+            INNER SPARC REALTY SERVICES<br>
+            Blk 26 Lot 4 Phase 3, Avida Residences Sta. Catalina, Brgy. Salawag,<br>
+            Dasmariñas, Cavite, Philippines
+        </address>
+        <p>&copy; 2024 Inner SPARC Realty Corporation | Powered by Inner SPARC Realty Corporation</p>  
+    </div>
+</footer>
+</body>
+
+</html>

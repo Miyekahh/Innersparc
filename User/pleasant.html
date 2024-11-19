@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pleasant Fields</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../Images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background-color: #F3F2EF;
+      }
+      header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          background-color: white;
+      }
+      .logo img {
+          width: 100px;
+          height: auto;
+          margin-left: 40px;
+      }
+      nav ul {
+          list-style-type: none;
+          margin-right: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li {
+          margin-left: 50px;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a {
+          color: black;
+          text-decoration: none;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a img {
+          width: 35px;
+          height: 35px; 
+          margin-right: 5px;
+      }
+      nav ul li a:hover {
+          text-decoration: none;
+      }
+
+      .active {
+          color: #B2974D;
+          font-weight: bold;
+      }
+
+      .subd1-head {
+        position: relative;
+        color: black;
+        margin-left: 8%;
+        margin-top: 5%;
+        margin-bottom: 2%;
+        width: 25%;
+        transition: transform 0.1s ease; 
+    }
+
+    .subd1-head:hover {
+        transform: scale(1) translateY(-5%); 
+    }
+
+    .subd1-head h1:hover {
+        color: #222689;
+    }
+
+    /* Buttons container styles */
+    .buttons-container {
+    position: absolute;
+    top: 50%;
+    right: -235%; /* Move the buttons more to the right */
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Share button styles */
+.share-button {
+    position: relative;
+}
+
+.share-button button {
+    background-color: #222689;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.share-button button:hover {
+    background-color: #4448c0;
+    border: 2px solid #FF9132;
+    color: white;
+}
+
+.share-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    list-style-type: none;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.share-dropdown li {
+    padding: 5px 0;
+}
+
+.share-dropdown a {
+    text-decoration: none;
+    color: black;
+}
+
+.share-dropdown a:hover {
+    color: #222689;
+}
+
+/* 3D Mapping button styles */
+.button-3d-mapping {
+    background-color: #222689;
+    color: white !important; /* Force text color to white */
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+}
+
+.button-3d-mapping:hover {
+    background-color: #4448c0;
+    border: 2px solid #FF9132;
+    color: white !important; /* Keep text white on hover */
+}
+
+
+
+    .location-head {
+        display: flex;
+        margin-top: -20px;
+        margin-left: 8%;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 30px;
+        width: 11%;
+        background-color: #FF9132;
+    }
+
+   .location-head img {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        color: white;
+    }
+
+    .arrow-down {
+        display: inline-block;
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent; 
+        border-right: 5px solid transparent; 
+        border-top: 8px solid black; 
+        margin-left: 10px; 
+        vertical-align: middle; 
+        transition: transform 0.3s, border-top-color 0.3s;
+    }
+    .subd1-head:hover .arrow-down {
+        border-top-color: #222689; 
+    }
+    .dropdown-open .arrow-down {
+        transform: rotate(180deg); 
+    }
+
+    .subd1-head .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 10px;
+        width: 150px; 
+        list-style-type: none;
+        padding: 20px;
+    }
+    .subd1-head a {
+        text-decoration: none;
+        color: black;
+    }
+    .subd1-head .dropdown-content a.active {
+        color: #222689;
+        font-weight: bold;
+    }
+
+    .subd1-head .dropdown-content li {
+        padding: 8px 0;
+    }
+
+    .subd1-head .dropdown-content li a {
+        color: black;
+        text-decoration: none;
+    }
+
+    
+    .image-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        width: 85%;
+        margin: auto;
+    }
+
+    .left-column img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .right-column {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .right-column img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .rect-pleasant {
+      width: 80%; /* Same width as the image grid */
+        height: auto; /* Allow height to adjust based on text */
+        padding: 20px; /* Space around text inside the rectangle */
+        margin: 20px auto; /* Center and space below the image grid */
+        border-radius: 2px; /* Optional: rounded corners */
+        text-align: center; /* Center-align text */
+        margin-bottom: 1%;
+    }
+
+    .rect-pleasant h1 {
+        margin: 0;
+        color: #222689; /* Header color */
+        font-weight: bold;
+    }
+
+    .rect-pleasant p {
+        margin: 10px 0; /* Space between paragraphs */
+        color: #333; /* Paragraph text color */
+        font-size: 16px; /* Paragraph font size */
+    }
+
+    .features-amenities-container {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 145, 50, 0.8);
+    }
+
+
+    .features-amenities {
+        width: 40%;
+        padding: 20px;
+        margin-left: 5%;
+    }
+    .features-amenities ul {
+    list-style-type: disc; /* Add bullet points */
+    padding-left: 20px; /* Indent the list slightly */
+    color: white; /* Match text color */
+    margin: 0;
+}
+
+.features-amenities li {
+    font-size: 20px;
+    margin-bottom: 10px; /* Space between list items */
+}
+
+    .features-amenities h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .features-amenities hr {
+    height: 5px; 
+    width: 80%;
+    margin-left: -.1%;
+    background-color: #1C7D38; 
+    border: none; 
+    margin-bottom: 10%;
+    }   
+
+
+    .features-amenities p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .gallery {
+    width: 35%; /* Adjust width as needed */
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    grid-template-rows: auto 1fr;
+    gap: 5px;
+    padding: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure the last image spans the full width of the gallery */
+.gallery img:nth-child(4) {
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 1;
+    width: 100%; /* Ensures the image fills the full width of the grid */
+    height: auto;
+    object-fit: cover;
+}
+
+
+
+    .explore-header h2 {
+        text-align: center;
+        font-size: 28px;
+        color: black; /* Adjust color as needed */
+        font-weight: bold;
+        margin-bottom: 1%;
+        margin-top: 4%;
+
+    }
+    .explore-header p {
+    font-size: 17px; /* Adjusts font size for readability */
+    color: #555; /* Sets a medium gray color for text */
+    line-height: 1.6; /* Improves line spacing for better readability */
+    text-align: justify; /* Centers the text */
+    margin: 0 auto; /* Centers the paragraph within its container */
+    max-width:  85%; /* Limits width for optimal readability */
+    padding: 10px 20px; /* Adds padding for better spacing */
+}
+
+    
+    .featured-properties {
+    max-width: 85%;
+    margin: 0 auto;
+    margin-top: -5%;
+    padding: 80px 20px;
+    text-align: left; /* Change text alignment to left */
+}
+
+.property-details {
+    padding: 10px;
+    text-align: left; /* Ensure left alignment for all details */
+    margin-top: -4%;
+}
+
+.featured-properties h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    gap: 30px; /* Space between cards */
+}
+
+.property-card {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stack image and details vertically */
+}
+
+.property-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.property-image {
+    position: relative;
+}
+
+.property-image img {
+    width: 100%;
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+}
+
+.labels {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    background-color: #007bff;
+    color: white;
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.label.featured { 
+  font-weight: bold;
+  background-color: #4b0082; }
+.label.open-house { background-color: #1e90ff; }
+.label.sale { 
+  font-weight: bold;
+  background-color: #FF4F4F; }
+
+.property-details {
+    padding: 10px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.property-details .price {
+    font-size: 1.2em;
+    color: #28a745;
+}
+
+.property-details .location {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.property-details h3 {
+    display: inline; /* Make the title inline to align with the link */
+    font-size: 1.5em;
+    color: #333;
+    margin-right: 50%;
+    vertical-align: middle; /* Aligns the title with the link vertically */
+}
+
+.property-details .nix{
+    margin-right: 55%;
+}
+
+.property-details .details-link {
+    color: #222689;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    vertical-align: middle;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.property-details .details-link:hover {
+    color: #FF9132;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+.property-details .details-link:hover .tooltip-property {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+.property-details .details-link .tooltip-property {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 25px;
+    left: 40%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    margin-left: 1%; /* Matching margin with .subd1-head */
+    width: fit-content; /* Adjust width based on content */
+    color: #1C7D38;
+    font-size: 15px;
+}
+
+.overlay-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px; /* Space between icons */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+    /* Overlay icons for Favorites and Compare */
+    .icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+    .heart-icon:hover {
+        color: red;
+    }
+    .compare-icon:hover{
+        color: #33cc33;
+    }
+    .model:hover .overlay-icons {
+        opacity: 1;
+    }
+    .model {
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+        background-color: #1C7D38;
+        text-align: left;
+        padding: 3px;
+        margin: 0;
+        box-sizing: border-box;
+        transition: transform 0.2s ease; /* Smooth transition */
+    }
+    .model:hover {
+        transform: translateY(-10px); /* Moves model up slightly */
+    }
+
+/* Show overlay icons on hover */
+.property-card:hover .overlay-icons {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Icon styling */
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(51, 46, 46, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 8px;
+    color: white;
+    font-size: 25px;
+    transition: background-color 0.3s ease;
+    background-size: cover; /* Ensures the image fits properly */
+    background-position: center; /* Centers the image */
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.additional-image {
+    position: relative;
+    width: 82.6%; /* Same width as the features-amenities-container */
+    margin: 20px auto; /* Center the image */
+    padding: 20px 0; /* Add vertical padding for spacing */
+    margin-top: -2.7%;
+}
+
+.additional-image img {
+    width: 100%;
+    height: 500px;
+    display: block;
+    opacity: 90%;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(34, 38, 137, 0.8); /* Semi-transparent #222689 */
+    color: white;
+    font-size: 17px;
+    padding: 20px;
+    width: 40%; /* Adjust the width as necessary */
+    text-align: justify;
+}
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+/* Main displayed image */
+.main-image img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Thumbnails */
+.gallery-thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-thumbnails img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-thumbnails img:hover {
+    transform: scale(1.1);
+    border: 2px solid #FF9132;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal for Features and Amenities */
+.modal- {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content- {
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+}
+
+/* Close Button */
+.modal-content- .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Download button */
+.download-btn- {
+    position: absolute;
+    top: 19px;
+    right: 80px;
+    font-size: 16px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.download-btn-:hover {
+    background-color: #0056b3;
+    border: 2px solid #FF9132;
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Gallery Images */
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gallery-images img {
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.1);
+}
+
+/* Center the header buttons to the top-right */
+.modal-header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.modal-header .button-group {
+    pointer-events: auto;
+}
+
+.close-btn,
+.download-btn,
+.share-btn {
+    background: #ffffff;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.close-btn:hover,
+.download-btn:hover,
+.share-btn:hover {
+    background: rgba(225, 217, 217, 0.5);
+}
+
+/* Center the image inside the modal */
+.modal-content- {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content- img {
+    max-width: 70%; /* Adjust the image size to be smaller */
+    max-height: 60%; /* Ensure it's not too tall */
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.prev-btn,
+.next-btn{
+    color: black;
+    font-size: 30px;
+}
+
+.modal-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.active-thumbnail {
+    border: 2px solid #FF9132;
+}
+
+
+/* Gallery Button Styles */
+.button-gallery {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.button-gallery:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    border: 2px solid #FF9132;
+}
+
+/* Gallery Icon Image */
+.gallery-icon {
+    width: 100%;
+    height: auto;
+    max-width: 30px; /* Adjust as needed */
+    display: block;
+}
+
+
+
+    footer {
+          color: black;
+          text-align: center;
+          padding: 20px 0;
+          margin-top: 20px;
+      }
+      .footer-img {
+          position: relative;
+          text-align: center;
+      }
+      .footer-img img {
+          width: 100%;
+          height: auto;
+          margin-bottom: -10px;
+      }
+      .footer-bottom {
+          margin-bottom: -50px;
+          background-color: white;
+          color: white;
+          padding: 10px 0;        
+      }
+      .footer-bottom p {
+          margin-bottom: 10px;
+          font-size: 1.1rem;
+          color: black;
+      }
+      .footer-bottom nav ul {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 20px;
+          margin-bottom: 40px;
+          text-transform: uppercase;
+      }
+      .footer-bottom nav ul li a {
+          text-decoration: none;
+      }
+      .footer-bottom address {
+          font-style: normal;
+          margin-bottom: 15px;
+          color: black;
+      }
+      .footer-bottom .copyright {
+          font-size: 0.8rem;
+      }
+      .active {
+        color: #1C7D38;
+        font-weight: bold;
+      }
+      .abovefooter {
+        border: none;
+        height: 5px;
+        margin-bottom: -2.5%;
+        background-color: #1C7D38; 
+        }
+
+
+  </style>
+</head>
+
+<body>
+<header>
+    <div class="logo"><img src="../Images/logo.png" alt="Logo"></div>
+    <nav>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="properties.html">PROPERTIES</a></li>
+            <li><a href="signup.html"><img src="../Images/usericon.png" alt="User Icon"></a></li>
+        </ul>
+    </nav>
+</header>   
+
+<div class="subd1-head">
+    <a href="javascript:void(0);" onclick="toggleDropdown()">
+        <h1>PLEASANT FIELDS<span class="arrow-down"></span></h1>
+    </a>
+
+    <ul id="dropdown-content" class="dropdown-content">
+        <li><a href="pleasant.html" class="active"> Pleasant Fields</a></li>
+        <li><a href="elisa.html">Elisa Homes</a></li>
+        <li><a href="minami.html">Minami Residences</a></li>
+    </ul>
+
+    <div class="buttons-container">
+        <!-- Share Button -->
+        <div class="share-button">
+            <button onclick="toggleShareDropdown()">Share</button>
+            <ul id="share-dropdown" class="share-dropdown">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/pleasant-fields" target="_blank">Facebook</a></li>
+                <li><a href="mailto:?subject=Check this out!&body=Visit this page: https://yourwebsite.com/pleasant-fields">Email</a></li>
+            </ul>
+        </div>
+        <!-- 3D Mapping Button -->
+        <a href="#" class="button-3d-mapping">3D Mapping</a>
+        <!-- Gallery Button -->
+        <button class="button-gallery" onclick="openGalleryModal()">
+            <img src="../Images/cam.png" alt="Gallery Icon" class="gallery-icon">
+        </button>
+    </div>
+</div>
+
+<!-- Gallery Modal -->
+<div id="gallery-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeGalleryModal()">&times;</span>
+        <a id="download-button" class="download-btn-" href="../Images/plsnt1.png" download>
+            &#128229; Download
+        </a>
+        <h2>Gallery</h2>
+        <div class="main-image">
+            <img id="displayed-image" src="../Images/plsnt1.png" alt="Displayed Image">
+        </div>
+        <div class="gallery-thumbnails">
+            <img src="../Images/plsnt1.png" alt="Gallery Image 1" onclick="updateDisplayedImage(this)">
+            <img src="../Images/plsnt2.png" alt="Gallery Image 2" onclick="updateDisplayedImage(this)">
+            <img src="../Images/plsnt3.png" alt="Gallery Image 3" onclick="updateDisplayedImage(this)">
+            <img src="../Images/playground.webp" alt="Gallery Image 1" onclick="updateDisplayedImage(this)">
+            <img src="../Images/entrance.webp" alt="Gallery Image 2" onclick="updateDisplayedImage(this)">
+            <img src="../Images/plsnt1.png" alt="Gallery Image 1" onclick="updateDisplayedImage(this)">
+            <img src="../Images/plsnt2.png" alt="Gallery Image 2" onclick="updateDisplayedImage(this)">
+            <img src="../Images/plsnt3.png" alt="Gallery Image 3" onclick="updateDisplayedImage(this)">
+            <img src="../Images/playground.webp" alt="Gallery Image 1" onclick="updateDisplayedImage(this)">
+            <img src="../Images/entrance.webp" alt="Gallery Image 2" onclick="updateDisplayedImage(this)">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  
+<!-- Location with icon -->
+<div class="location-head">
+  <img src="../Images/location1.png" alt="Location Icon">
+  <span>Santol, Tanza Cavite</span>
+</div>
+
+<!-- Image Gallery Grid -->
+<div class="image-grid">
+    <div class="left-column">
+      <img src="../Images/plsnt1.png" alt="Subdivision Image 1">
+    </div>
+    <div class="right-column">
+      <img src="../Images/plsnt2.png" alt="Subdivision Image 2">
+      <img src="../Images/plsnt3.png" alt="Subdivision Image 3">
+    </div>
+</div>
+
+<div class="rect-pleasant">
+    <h1>Welcome to Pleasantfields!</h1>
+    <p>A Newly Launched American-Inspired Townhome in Santol, Tanza Cavite!</p>
+    <p>Only 26km (59 minutes) to Mall of Asia!</p>
+</div>
+
+<div class="features-amenities-container">
+    <div class="features-amenities">
+        <h2>FEATURES AND AMENITIES</h2>
+        <hr>
+        <ul>
+            <li>Pocket Garden Lots</li>
+            <li>Community Hall</li>
+            <li>Play/Fitness Park</li>
+            <li>Garden Hall</li>            
+            <li>Wider Roads and Green Spaces</li>
+        </ul>
+    </div>
+    <div class="gallery">
+        <img src="../Images/entrance.webp" alt="Entrance" onclick="openModal(this, 0)">
+        <img src="../Images/park.jpg" alt="Park" onclick="openModal(this, 1)">
+        <img src="../Images/hall.jpg" alt="Hall" onclick="openModal(this, 2)">
+        <img src="../Images/playground.webp" alt="Playground" onclick="openModal(this, 3)">
+    </div>
+    
+    <!-- Modal -->
+    <div id="imageModal" class="modal-">
+        <div class="modal-header">
+            <div class="button-group">
+                <button class="download-btn" id="downloadBtn">
+                    <img src="../Images/dl.png" alt="Download" style="width: 20px; height: 20px;">
+                </button>
+                <button class="share-btn" onclick="shareImage()">
+                    <img src="../Images/share.png" alt="Share" style="width: 20px; height: 20px;">
+                </button>
+                <button class="close-btn" onclick="closeModal()">
+                    <img src="../Images/close.png" alt="Close" style="width: 20px; height: 20px;">
+                </button>
+            </div>
+        </div>
+        
+
+        <div class="modal-content-">
+            <button class="prev-btn" onclick="prevImage()">❮</button>
+            <img id="modalImage" alt="Fullscreen Image">
+            <button class="next-btn" onclick="nextImage()">❯</button>
+        </div>
+        <div class="modal-thumbnails">
+            <!-- Thumbnails will be dynamically added here -->
+        </div>
+    </div>
+    
+</div>
+
+
+<!-- Add an Image Below the Features and Amenities Section -->
+<div class="additional-image">
+    <img src="../Images/ple.webp" alt="Your Image Description">
+    <div class="overlay-text">
+        <p>
+            Pleasantfields is a new home subdivision in Tanza, Cavite.<br><br>
+            An American-inspired townhome community, offering convenience, security, and a lifestyle that caters to the Filipino working class.
+            <br><br>
+            We sweat the stuff that makes a home live really well. Great floor plans and smart use of space, striking architecture and beautiful finishes. All complemented by rich landscaping. And of course, our high ceilings and big windows fill your home with lots of natural light.
+            A Better Home is our promise
+        </p>
+    </div>
+</div>
+
+
+
+<div class="explore-header">
+    <h2>Explore These House Models</h2>
+    <p>Discover a range of thoughtfully designed homes tailored to meet diverse lifestyles and preferences. Each model offers unique architectural charm, functional layouts, and high-quality finishes, providing a variety of choices to suit your needs. Whether you're looking for cozy family spaces, spacious living areas, or modern amenities, these models showcase the best in comfortable and stylish living. Step inside and find the perfect home that matches your vision.
+    </p>
+</div>
+
+<div class="featured-properties">
+    <div class="property-grid">
+        <!-- Property 1 -->
+        <div class="property-card">
+            <div class="property-image">
+                <img src="../Images/lincoln.png" alt="Property 1">
+                <div class="labels">
+                    <span class="label sale">SALE</span>
+                </div>
+                <!-- Add overlay icons with tooltips -->
+                <div class="overlay-icons">
+                    <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+                    <span class="tooltip">Add to Favorites</span>
+                    </a>
+                    <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+                    <span class="tooltip">Compare</span>
+                    </a>
+                </div>
+            </div>
+            <div class="property-details">
+                <h3>Lincoln</h3>
+                <a href="lincoln.html" class="details-link">Explore &rarr;
+                    <span class="tooltip-property">View Property Details</span>
+                </a>
+                <p class="price">₱3,568,317</p>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Brgy. Santol, Tanza, Cavite
+                </p>
+            </div>
+        </div>
+
+        <!-- Property 2 -->
+        <div class="property-card">
+            <div class="property-image">
+                <img src="../Images/nixon.png" alt="Property 2">
+                <div class="labels">
+                    <span class="label sale">SALE</span>
+                </div>
+                <!-- Add overlay icons with tooltips -->
+                <div class="overlay-icons">
+                    <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+                    <span class="tooltip">Add to Favorites</span>
+                    </a>
+                    <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+                    <span class="tooltip">Compare</span>
+                    </a>
+                </div>
+            </div>
+            <div class="property-details">
+                <h3 class="nix">Nixon</h3>
+                <a href="nixon.html" class="details-link">Explore &rarr;
+                    <span class="tooltip-property">View Property Details</span>
+                </a>
+                <p class="price">₱2,700,000</p>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Brgy. Santol, Tanza, Cavite
+                </p>
+            </div>
+        </div>
+
+        <!-- Property 3 -->
+        <div class="property-card">
+            <div class="property-image">
+                <img src="../Images/kennedy.png" alt="Property 3">
+                <div class="labels">
+                    <span class="label sale">SALE</span>
+                </div>
+                <!-- Add overlay icons with tooltips -->
+                <div class="overlay-icons">
+                    <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+                    <span class="tooltip">Add to Favorites</span>
+                    </a>
+                    <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+                    <span class="tooltip">Compare</span>
+                    </a>
+                </div>
+            </div>
+            <div class="property-details">
+                <h3>Kennedy</h3>
+                <a href="kennedy.html" class="details-link">Explore &rarr;
+                    <span class="tooltip-property">View Property Details</span>
+                </a>
+                <p class="price">₱3,086,834</p>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Brgy. Santol, Tanza, Cavite
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="abovefooter">
+
+<footer>
+    <div class="footer-bottom">
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="termsandcondition.html">Terms and Conditions</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <address>
+            INNER SPARC REALTY SERVICES<br>
+            Blk 26 Lot 4 Phase 3, Avida Residences Sta. Catalina, Brgy. Salawag,<br>
+            Dasmariñas, Cavite, Philippines
+        </address>
+        <p>&copy; 2024 Inner SPARC Realty Corporation | Powered by Inner SPARC Realty Corporation</p>  
+    </div>
+</footer>
+
+
+
+
+<script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById("dropdown-content");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      
+      const subd1Head = document.querySelector('.subd1-head');
+      subd1Head.classList.toggle('dropdown-open', dropdown.style.display === "block");
+    }
+    
+    window.onclick = function(event) {
+      if (!event.target.closest('.subd1-head')) {
+        const dropdown = document.getElementById("dropdown-content");
+        if (dropdown) dropdown.style.display = "none";
+        
+        const subd1Head = document.querySelector('.subd1-head');
+        subd1Head.classList.remove('dropdown-open');
+      }
+    }
+    
+
+    function toggleShareDropdown() {
+    const shareDropdown = document.getElementById("share-dropdown");
+    shareDropdown.style.display = shareDropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onclick = function(event) {
+    if (!event.target.closest('.share-button')) {
+        const shareDropdown = document.getElementById("share-dropdown");
+        if (shareDropdown) shareDropdown.style.display = "none";
+    }
+};
+
+    let currentIndex = 0;
+    const images = Array.from(document.querySelectorAll(".gallery img"));
+    
+    function openModal(imgElement, index) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const downloadBtn = document.getElementById("downloadBtn");
+    
+        currentIndex = index;
+        modal.style.display = "flex"; // Ensure modal is visible
+        modalImg.src = imgElement.src; // Set the clicked image as the modal image
+        downloadBtn.setAttribute("href", imgElement.src);
+        downloadBtn.setAttribute("download", `image-${index + 1}.jpg`); // Dynamic image name
+    
+        // Add event listener to download button to trigger download
+        downloadBtn.addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = imgElement.src;
+            link.download = `image-${index + 1}.jpg`; // Dynamic download file name
+            link.click(); // Trigger the download
+        });
+    
+        // Generate thumbnails
+        generateThumbnails();
+        highlightThumbnail(currentIndex); // Highlight the selected thumbnail
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById("imageModal");
+        modal.style.display = "none"; // Hide the modal
+    }
+    
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateModalImage();
+    }
+    
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateModalImage();
+    }
+    
+    function updateModalImage() {
+        const modalImg = document.getElementById("modalImage");
+        const downloadBtn = document.getElementById("downloadBtn");
+        const newImage = images[currentIndex];
+    
+        modalImg.src = newImage.src;
+        downloadBtn.setAttribute("href", newImage.src);
+        downloadBtn.setAttribute("download", `image-${currentIndex + 1}.jpg`);
+    
+        highlightThumbnail(currentIndex);
+    }
+    
+    function shareImage() {
+        const modalImgSrc = document.getElementById("modalImage").src;
+        if (navigator.share) {
+            navigator.share({
+                title: 'Check out this image',
+                url: modalImgSrc,
+            }).catch((error) => console.log("Error sharing:", error));
+        } else {
+            alert("Sharing is not supported in this browser.");
+        }
+    }
+    
+    // Thumbnails
+    function generateThumbnails() {
+        const thumbnailContainer = document.querySelector(".modal-thumbnails");
+        thumbnailContainer.innerHTML = ""; // Clear previous thumbnails
+    
+        images.forEach((img, index) => {
+            const thumbnail = document.createElement("img");
+            thumbnail.src = img.src;
+            thumbnail.alt = `Thumbnail ${index + 1}`;
+            thumbnail.classList.add("thumbnail");
+            thumbnail.onclick = () => {
+                currentIndex = index;
+                updateModalImage();
+            };
+            thumbnailContainer.appendChild(thumbnail);
+        });
+    }
+    
+    function highlightThumbnail(index) {
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        thumbnails.forEach((thumbnail, idx) => {
+            if (idx === index) {
+                thumbnail.classList.add("active-thumbnail");
+            } else {
+                thumbnail.classList.remove("active-thumbnail");
+            }
+        });
+    }
+
+    document.querySelector('.share-facebook').setAttribute(
+    'href',
+    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`
+);
+
+function openGalleryModal() {
+    const modal = document.getElementById("gallery-modal");
+    modal.style.display = "flex"; // Show the modal
+}
+
+function closeGalleryModal() {
+    const modal = document.getElementById("gallery-modal");
+    modal.style.display = "none";
+}
+
+function updateDisplayedImage(thumbnail) {
+    const displayedImage = document.getElementById("displayed-image");
+    displayedImage.src = thumbnail.src;
+    displayedImage.alt = thumbnail.alt;
+}
+
+// Close modal if clicked outside content
+window.onclick = function(event) {
+    const modal = document.getElementById("gallery-modal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+
+</script>
+    
+</body>
+</html>

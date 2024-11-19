@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Appointment</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../Images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+    * {
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background-color: #fff;
+        }
+
+        /* Sidebar */
+        #sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        box-shadow: 0 0 10px rgba(153, 117, 95, 0.8);
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: white;
+        overflow-y: auto;
+        transition: 0.5s;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding-top: 0px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        }
+
+        #sidebar .close-btn {
+        position: absolute;
+        right: -28px;
+        margin-top: -10px;
+        font-size: 25px;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        #sidebar a:last-child {
+        border-bottom: none;
+        }
+
+        #sidebar a:hover {
+        color: #222689;
+        }
+
+        #sidebar a {
+        padding: 25px;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        display: flex;
+        margin-right: 29px;
+        align-items: center;
+        }
+
+        #sidebar img {
+        margin-right: 25px;
+        width: 25px;
+        height: 25px;
+        
+        }
+
+        #sidebar .logo img{
+           
+            margin-left: 90px;
+            width: 70px;
+            height: 70px;
+            
+            
+        }
+
+        #sidebar .logo {
+            background-color: #FF9132;
+        }
+
+        #sidebar hr {
+            border: 1-px solid black;
+        }
+
+        hr {
+        border: 1px solid black; /* Adjust thickness and color */
+       
+    }
+
+
+        /* Header */
+        .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #FF9132;
+        color: white;
+            }
+
+
+        .menu-icon {
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: 45px;
+            
+            }
+
+        h1 {
+        font-size: 30px;
+        margin-right: 950px;
+        white-space: nowrap;
+        color: white;
+
+            }
+
+        .profile  {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+      
+         }
+         
+    
+        .header img {
+            height: 40px;
+            margin-right: -10px;
+        }
+
+        .container {
+        padding: 20px;
+        max-width: 700px;
+        margin: auto;
+        }
+        
+        .breadcrumb {
+          padding: 10px 40px;
+          font-size: 20px;
+          text-align: right;
+          margin-right: 50px;
+          margin-top: 30px;
+        }
+
+        .line {
+            margin-bottom: 30px;
+            margin-left: 40px;
+        }
+        .breadcrumb a {
+            color: #000;
+            text-decoration: none;
+       
+           
+        }
+        .breadcrumb a:hover {
+            text-decoration: none;
+            color: #222689;
+        }
+        .breadcrumb span {
+            color: #FF9132;
+            
+        }
+
+        .breadcrumb {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 14px;
+        margin-right: 60px;
+        }
+
+        .breadcrumb-nav a {
+            text-decoration: none;
+            color: #FF9132;
+            margin-right: 5px;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-search {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .breadcrumb-search input {
+            width: 200px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .breadcrumb-search input:focus {
+            outline: none;
+            border-color: #FF9132;
+        }
+
+        .breadcrumb-search button {
+            background-color: #FF9132;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .breadcrumb-search button img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .breadcrumb-search button:hover {
+            background-color: #e87e2c;
+        }
+
+
+    
+        .table-container {
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 1330px;
+            margin-left:85px;
+            text-align: 
+
+        }
+      
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-left: 25px;
+        color: #000;
+        }
+
+        .table-body {
+            color: #333;
+        }
+
+        .table-body td {
+            padding: 0; /* Remove padding */
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            
+            
+        }
+
+        tbody tr:nth-child(odd) {
+        background-color: #b3acac;
+    }
+
+        tbody tr:nth-child(even) {
+            background-color: #b3acac;
+        }
+
+        .table-body .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-bottom: 5px;
+            padding: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            
+        }
+
+       
+
+        .action-buttons button {
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .confirm-button {
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        background-color: #f2f2f2; /* Default background color */
+        }
+
+        /* Hover effect to make the button green */
+        .confirm-button:hover {
+            background-color: #006633; /* Green color for hover */
+            color: white; /* Change text color to white on hover */
+        }
+
+        .resched-button {
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        background-color: #f2f2f2; /* Default background color */
+        }
+
+        /* Hover effect to make the button green */
+        .resched-button:hover {
+            background-color: #222689; /* Green color for hover */
+            color: white; /* Change text color to white on hover */
+        }
+
+        .decline-button {
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        background-color: #f2f2f2; /* Default background color */
+        }
+
+        /* Hover effect to make the button green */
+        .decline-button:hover {
+            background-color: red; /* Green color for hover */
+            color: white; /* Change text color to white on hover */
+        }
+
+          /* Modal Styles */
+          .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h3 {
+            padding: 20px;
+        }
+
+
+        .modal-icon {
+            margin: 10px 0;
+        }
+
+        .modal-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .modal-content h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .modal-btn {
+            background-color: #FF9132;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+           ;
+        }
+
+        .modal-btn:hover {
+            background-color: #222689;
+        }
+
+        .modal-btnn{
+            background-color: #FF9132;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+         
+
+        }
+
+        .modal-btnn:hover{
+            background-color: #222689;
+            color: white;
+
+        }
+
+        .modal-btnn{
+           margin-top: 20px;
+
+        }
+
+        #close .close-btnn{
+            margin-left: 290px;
+           cursor: pointer;
+           
+           
+           
+        }
+
+        .close-btn{
+            cursor: pointer;
+            margin-left: 290px;
+        }
+
+        .logmodal {
+            display: none;
+            position: fixed;
+            z-index: 100; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); 
+        }
+
+        .logout-modal {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logout-btn {
+            background-color: #FF9132;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .logout-btn:hover {
+            background-color: #222689;
+        }
+        .logout-modal p{
+            padding: 30px;
+            margin-top: 10px;
+        }
+ 
+
+    </style>
+    <body>
+        <div id="sidebar">
+            <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">×</a>
+            <div class="logo">
+            <img src="../Images/logo.png" alt="Logo" width="80"></div>
+            <hr>          
+            <a href="dashboard.html">
+                <img src="../images/dashboard.png" alt="Dashboard Icon">
+                Dashboard
+              </a>
+              <a href="Properties.html">
+                <img src="../images/house.png" alt="properties Icon">
+               Properties
+              </a>
+              <a href="message.html">
+                <img src="../images/email.png" alt="Message Icon">
+              Message
+              </a>
+              <a href="appointment.html">
+             
+                <img src="../images/appointment-calendar.png" alt="Appointment icon">
+              Appointment
+              </a><a href="Manage-Appointment.html">
+                <img src="../images/schedule.png" alt="Schedule Icon">
+                Manage Appointments
+              </a>
+              </div>        
+        </div>      
+        <div class="dashboard">
+            <!-- Header -->
+            <div class="header">
+                <div class="menu-icon" onclick="toggleSidebar()"><img src="../Images/hamburger.png" alt="menu Icon"></div>
+                <h1>Manage Appointments</h1>      
+                <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" alt="admin Icon" class="icon-img" onclick="openModal()">
+                <div class="profile"> Admin</div>
+            </div>
+
+            <div class="breadcrumb">
+                
+            <div class="line"> <hr> </div>
+          
+            <div class="breadcrumb-search">
+                <input type="text" placeholder="Search..." id="searchInput">
+                <button type="button" id="searchBtn">
+                    <img src="https://img.icons8.com/ios-filled/20/FFFFFF/search.png" alt="search icon">
+                </button>
+            </div>
+            </div>
+            
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Facebook ID</th>
+                                <th>Address</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Action</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="action-buttons">
+                                    <button class="confirm-button" onclick="confirmAppointment(this)">Confirm</button>
+                                    <button class="resched-button" onclick="rescheduleAppointment(this)">Reschedule</button>
+                                    <button class="decline-button" onclick="declineAppointment(this)">Decline</button>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="action-buttons">
+                                    <button class="confirm-button" onclick="confirmAppointment(this)">Confirm</button>
+                                    <button class="resched-button" onclick="rescheduleAppointment(this)">Reschedule</button>
+                                    <button class="decline-button" onclick="declineAppointment(this)">Decline</button>
+                                </td>
+                             
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="action-buttons">
+                                    <button class="confirm-button" onclick="confirmAppointment(this)">Confirm</button>
+                                    <button class="resched-button" onclick="rescheduleAppointment(this)">Reschedule</button>
+                                    <button class="decline-button" onclick="declineAppointment(this)">Decline</button>
+                                </td>
+                            
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="action-buttons">
+                                        <button class="confirm-button" onclick="confirmAppointment(this)">Confirm</button>
+                                        <button class="resched-button" onclick="rescheduleAppointment(this)">Reschedule</button>
+                                        <button class="decline-button" onclick="declineAppointment(this)">Decline</button>
+                                    </td>
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="confirmModal" class="modal">
+                <div id="close" class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <div class="modal-icon">
+                       
+                    </div>
+                    <h2>Appointment successfully confirmed!</h2>
+                    <button class="modal-btn" onclick="closeModal()">Yes</button>
+                    <button class="modal-btn" onclick="closeModal()">No</button>
+                </div>
+            </div>
+
+            <div id="rescheduleModal" class="modal">
+                <div id="close" class="modal-content">
+                    <span class="close-btn" onclick="closeRescheduleModal()">&times;</span>
+                    <h3>Reschedule Appointment</h3>
+                    <label for="rescheduleDate">Select new date:</label>
+                    <input type="date" id="rescheduleDate" name="rescheduleDate"><br><br>
+            
+                    <label for="rescheduleTime">Select new time:</label>
+                    <select id="rescheduleTimeHour">
+                        <option value="7">7 AM</option>
+                        <option value="8">8 AM</option>
+                        <option value="9">9 AM</option>
+                        <option value="10">10 AM</option>
+                        <option value="11">11 AM</option>
+                        <option value="12">12 PM</option>
+                        <option value="13">1 PM</option>
+                        <option value="14">2 PM</option>
+                        <option value="15">3 PM</option>
+                        <option value="16">4 PM</option>
+                    </select>
+                    <div>
+            
+                    <button class="modal-btnn" onclick="saveReschedule()">Save</button>
+                </div>
+            </div>
+        </div>     
+        <div id="declineModal" class="modal">
+            <div id="close" class="modal-content">
+                <span class="close-btnn" onclick="closeDeclineModal()">&times;</span>
+                <h2>Are you sure you want to decline this appointment?</h2>
+                <button class="modal-btn" onclick="handleDecline()">Yes</button>
+                <button class="modal-btn" onclick="closeDeclineModal()">No</button>
+            </div>
+        </div> 
+      <div id="logoutModal" class="logmodal">
+                <div class="logout-modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <p>Are you sure you want to logout?</p>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+
+            <script>
+                  var sidebarVisible = false;
+         
+         function toggleSidebar() {
+         var sidebar = document.getElementById('sidebar');
+         var content = document.querySelector('.content');
+ 
+         sidebarVisible = !sidebarVisible;
+ 
+         if (sidebarVisible) {
+             sidebar.style.width = '250px';
+             content.style.marginLeft = '250px';
+         } else {
+             sidebar.style.width = '0';
+             content.style.marginLeft = '0';
+         }
+     }
+
+        // Function to open the logout modal
+        function openModal() {
+        document.getElementById("logoutModal").style.display = "block";
+                    }
+
+        // Function to handle logout (customize as needed)
+        function logout() {
+        // Perform logout actions here (e.g., redirect to login page)
+          window.location.href = 'admin-login.html';
+                    }
+
+         // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+        var modal = document.getElementById("logoutModal");
+        if (event.target == modal) {
+        closeModal();
+        }
+                    }
+
+        function confirmAppointment(button) {
+        const modal = document.getElementById('confirmModal');
+        modal.style.display = 'flex'; // Show the modal (centered)
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'none'; // Hide the modal
+        }
+
+        // Close the modal if the user clicks outside it
+        window.onclick = function(event) {
+            const modal = document.getElementById('confirmModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+
+        function rescheduleAppointment(button) {
+        const modal = document.getElementById('rescheduleModal');
+        modal.style.display = 'flex'; // Show the modal (centered)
+    }
+
+        function closeRescheduleModal() {
+            const modal = document.getElementById('rescheduleModal');
+            modal.style.display = 'none'; // Hide the modal
+        }
+
+        function saveReschedule() {
+            const newDate = document.getElementById('rescheduleDate').value;
+            const newTimeHour = document.getElementById('rescheduleTimeHour').value;
+
+            if (!newDate || !newTimeHour) {
+                alert('Please select both a new date and time.');
+                return;
+            }
+
+            alert(`Appointment rescheduled to ${newDate} at ${newTimeHour}:00.`);
+            closeRescheduleModal();
+        }
+
+        // Close the modal if the user clicks outside it
+        window.onclick = function(event) {
+            const modal = document.getElementById('rescheduleModal');
+            if (event.target == modal) {
+                closeRescheduleModal();
+            }
+        };
+
+        function declineAppointment(button) {
+                    const modal = document.getElementById('declineModal');
+                    modal.style.display = 'flex'; // Show the modal (centered)
+                }
+
+                    function closeDeclineModal() {
+                        const modal = document.getElementById('declineModal');
+                        modal.style.display = 'none'; // Hide the modal
+                    }
+
+                    function handleDecline() {
+                        alert("Appointment declined successfully.");
+                        closeDeclineModal();
+                    }
+
+                    // Close the modal if the user clicks outside it
+                    window.onclick = function(event) {
+                        const declineModal = document.getElementById('declineModal');
+                        if (event.target == declineModal) {
+                            closeDeclineModal();
+                        }
+                    };
+
+            </script>
+            </body>
+            </html>

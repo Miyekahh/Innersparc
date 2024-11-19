@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Properties</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../Images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background-color: #F3F2EF;
+      }
+      header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          background-color: white;
+      }
+      .logo img {
+          width: 100px;
+          height: auto;
+          margin-left: 40px;
+      }
+      nav ul {
+          list-style-type: none;
+          margin-right: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li {
+          margin-left: 50px;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a {
+          color: black;
+          text-decoration: none;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a img {
+          width: 35px;
+          height: 35px; 
+          margin-right: 5px;
+      }
+      nav ul li a:hover {
+          text-decoration: none;
+      }
+
+      .breadcrumb {
+          padding: 10px 40px;
+          font-size: 20px;
+          text-align: right;
+          margin-right: 50px;
+          margin-top: 20px;
+      }
+      .breadcrumb a {
+          color: #000;
+          text-decoration: none;
+      }
+      .breadcrumb a:hover {
+          color: #333;
+      }
+      .breadcrumb span {
+          color: #003399;
+      }
+      .active {
+        color: #1C7D38;
+        font-weight: bold;
+      }
+    .header-line {
+        width: 28%; /* Adjust width as needed */
+        margin: 10px auto; /* Centers the line */
+        border: 0;
+        border-top: 5px solid #222689; /* Color and thickness of the line */
+    }
+
+
+      .properties-head{
+          color: black;
+          font-weight: bold;
+          text-align: center;
+          margin-top: 2.5%;
+          margin-bottom: 3%;
+      }
+    .compare-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+    }
+    .compare-properties {
+        background-color: white;
+        padding: 20px;
+        border-radius: 2px;
+        box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.1);
+        width: 50%;
+        margin-right: 20px;
+        text-align: center;
+    }
+    .compare-properties h2 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #222689;
+        margin-bottom: 20px;
+    }
+    .compare-properties button {
+        background-color: #222689;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .compare-properties button:hover {
+        background-color: #0099cc;
+    }
+
+
+.model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* Adjust as needed */
+    width: 70%; /* Ensure full-width grid */
+    padding: 0; /* Remove any padding */
+    box-sizing: border-box;
+}
+
+.model {
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    background-color: #1C7D38;
+    text-align: left;
+    padding: 3px; /* Remove extra padding */
+    margin: 0; /* Remove extra margin */
+    box-sizing: border-box;
+}
+
+    .model img {
+        width: 100%;
+        height: auto;
+    }
+    .model-name {
+        font-size: 12px;
+        border-radius: 2px;
+        padding: 10px;
+        background-color: white;
+    }
+
+    .price {
+        font-size: 14px;
+        color: #333;
+        margin: 5px 0;
+    }
+
+    .location {
+        font-size: 12px;
+        color: #777;
+    }
+    .checkbox-container {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+    }
+    .checkbox-container input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        accent-color: #FF9132;
+    }
+
+    /* Labels for Featured and Sale */
+    .labels {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .label {
+        background-color: #FF9132;
+        color: white;
+        padding: 5px;
+        margin-right: 5px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+    .label.featured {
+        background-color: #FF4F4F; /* Red color for featured */
+    }
+    .label.sale {
+      font-weight: bold;
+        background-color: #FF4F4F; /* Green color for sale */
+    }
+
+    /* Overlay icons for Favorites and Compare */
+    .icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+    .icon {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px;
+    border-radius: 55%;
+    text-decoration: none;
+}
+.heart-icon:hover {
+    color: red;
+}
+.compare-icon:hover{
+    color: #33cc33;
+}
+
+.model:hover .overlay-icons {
+    opacity: 1;
+}
+    .model {
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+        background-color: #1C7D38;
+        text-align: left;
+        padding: 3px;
+        margin: 0;
+        box-sizing: border-box;
+        transition: transform 0.2s ease; /* Smooth transition */
+    }
+    .model:hover {
+        transform: translateY(-10px); /* Moves model up slightly */
+    }
+    .overlay-icons {
+        position: absolute;
+        bottom: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        bottom: 120%;
+        right: 50%;
+        transform: translateX(50%);
+        width: max-content;
+        white-space: nowrap;
+        transition: opacity 0.3s ease;
+    }
+
+
+    </style>
+</head>
+<body>
+  
+<header>
+    <div class="logo"><img src="../Images/logo.png" alt="Logo"></div>
+    <nav>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="properties.html" class="active">PROPERTIES</a></li>
+            <li><a href="signup.html"><img src="../Images/usericon.png" alt="User Icon"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="breadcrumb">
+    <a href="home.html">Home</a> / <span>Properties</span>
+</div>
+
+<div class="properties-head">
+    <h1>AVAILABLE PROPERTIES</h1>
+    <hr class="header-line">
+</div>
+
+
+<div class="compare-container">
+    <div class="compare-properties">
+        <h2>COMPARE PROPERTIES</h2>
+        <p>Select up to 3 house models</p>
+        <button type="button">SELECT</button>
+        <button type="button">REMOVE</button>
+    </div>
+
+
+
+<div class="model-grid">
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/dahlia.jpg" alt="Model 1">
+        <div class="model-name">Dahlia
+        <p class="price">₱3,500,000</p>
+        <p class="location">Molino IV, Bacoor, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/nixon.jpg" alt="Model 1">
+        <div class="model-name">Nixon
+        <p class="price">₱2,700,000</p>
+        <p class="location">Brgy. Santol, Tanza, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/kenedy.jpg" alt="Model 1">
+        <div class="model-name">Kenedy
+        <p class="price">₱3,086,834</p>
+        <p class="location">Brgy. Santol, Tanza, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/canalily.png" alt="Model 1">
+        <div class="model-name">Canalily
+        <p class="price">₱6,300,000</p>
+        <p class="location">Molino IV, Bacoor, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/sapphire.jpg" alt="Model 1">
+        <div class="model-name">Sapphire
+        <p class="price">₱6,998,712</p>
+        <p class="location">Molino IV, Bacoor, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/lincoln.jpg" alt="Model 1">
+        <div class="model-name">Lincoln
+        <p class="price">₱3,568,317</p>
+        <p class="location">Brgy. Santol, Tanza, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/hanna.jpg" alt="Model 1">
+        <div class="model-name">Hanna
+        <p class="price">₱5,500,500</p>
+        <p class="location">Brgy. Santiago, General Trias, Cavite</p>
+        </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+
+    <div class="model">
+        <div class="labels">
+            <span class="label sale">SALE</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox">
+        </div>
+        <img src="../Images/pearl.jpg" alt="Model 1">
+        <div class="model-name">Pearl
+        <p class="price">₱6,562,715</p>
+        <p class="location">Molino IV, Bacoor, Cavite</p>
+      </div>
+        <div class="overlay-icons">
+            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥<span class="tooltip">Add to Favorites</span></a>
+            <a href="#" class="icon compare-icon" title="Compare">⇄<span class="tooltip">Compare</span></a>    
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
