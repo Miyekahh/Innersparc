@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="admin-panel">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Admin Panel</h2>
+      <ul>
+        <li><a href="#dashboard" class="active">Dashboard</a></li>
+        <li><a href="#properties">Manage Properties</a></li>
+        <li><a href="#articles">Manage Articles</a></li>
+        <li><a href="#users">User Management</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <h1>Welcome, Admin!</h1>
+        <a href="/logout" class="logout">Logout</a>
+      </header>
+
+      <!-- Dashboard Content -->
+      <section class="content">
+        <h2>Dashboard</h2>
+        <div class="stats">
+          <div class="card">
+            <h3>10</h3>
+            <p>Properties Listed</p>
+          </div>
+          <div class="card">
+            <h3>5</h3>
+            <p>Articles Published</p>
+          </div>
+          <div class="card">
+            <h3>20</h3>
+            <p>Inquiries Received</p>
+          </div>
+        </div>
+
+        <h3>Recent Properties</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Property ID</th>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Modern Apartment</td>
+              <td>Available</td>
+              <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Luxury Villa</td>
+              <td>Sold</td>
+              <td><button>Edit</button> <button>Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

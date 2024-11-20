@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home - Inner SPARC Realty Coorporation</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../Images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          background-color: white;
+      }
+      header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          background-color: white;
+      }
+      .logo img {
+          width: 100px;
+          height: auto;
+          margin-left: 40px;
+      }
+      nav ul {
+          list-style-type: none;
+          margin-right: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li {
+          margin-left: 50px;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a {
+          color: black;
+          text-decoration: none;
+          display: flex;
+          align-items: center; 
+      }
+      nav ul li a img {
+          width: 35px;
+          height: 35px; 
+          margin-right: 5px;
+      }
+      nav ul li a:hover {
+          text-decoration: none;
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=League+Spartan:wght@100..900&display=swap');
+
+.image-container {
+    position: relative;
+    text-align: center;
+}
+
+.home-image {
+    width: 100%;
+    height: auto;
+}
+
+.overlay-header {
+    position: absolute;
+    top: 120px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Anton', sans-serif;
+    font-size: 3.5em; /* Adjust size as needed */
+    color: white;
+    z-index: 2;
+}
+
+.overlay-subheader {
+    position: absolute;
+    top: 280px; /* Adjust to position below the header */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Anton', sans-serif;
+    font-size: 1.2em; /* Adjust size as needed */
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.inquire-button,
+.explore-button {
+    position: relative;
+    z-index: 1; /* Ensures buttons are below the header and subheader */
+    margin-top: 20px; /* Space between header and buttons */
+}
+
+
+      .inquire-button {
+          position: absolute;
+          top: 80%; 
+          left: 40%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          color: #1C7D38;
+          font-weight: bolder;
+          border: none;
+          padding: 15px 30px;
+          font-size: 20px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          cursor: pointer;
+          border-radius: 10px;
+          border: 3px solid #1C7D38;
+          transition: background-color 0.3s;
+      }
+      .inquire-button:hover {
+          color: white;
+          background-color: #1C7D38; 
+      }
+.explore-button {
+    position: absolute;
+    top: 80%;
+    left: 60%; /* Adjust positioning as needed */
+    transform: translate(-50%, -50%);
+    background-color: #1C7D38;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.explore-button:hover {
+    color: #1C7D38;
+    background-color: white;
+}
+
+      .home-image {
+          width: 100%; 
+          height: auto; 
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .logo-image {
+          width: 10%; 
+          height: auto; 
+          margin-top: 1%;
+          margin-bottom: 2%;
+      }
+      .subd-image {
+          width: 100%; 
+          height: auto; 
+          border-radius: 5px;
+      }
+      .subd-container {
+          position: relative;
+          display: inline-block;
+          width: 28%;
+          margin: 22px;
+      }
+      .overlay-text {
+          position: absolute;
+          top: 85%;
+          left: 20px;
+          color: white;
+          font-weight: bold;
+          font-size: 22px;
+          padding: 5px 10px;
+          border-radius: 5px;
+          background-color: #1C7D38;
+      }
+    .circle-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 220px; /* Larger size */
+        height: 220px; /* Larger size */
+        background-color: rgba(255, 255, 255, 0.6); /* Slightly more visible */
+        border-radius: 50%;
+        border: 3px solid white; /* Thicker border */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px; /* Larger font */
+        color: white;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s, background-color 0.3s;
+    }
+    
+    .circle-overlay:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+        background-color: rgba(255, 255, 255, 0.8); 
+    }
+
+    /* Tooltip on hover over the circle */
+    .circle-overlay:hover::after {
+        content: "Tap 'Explore' to learn more about this subdivision ";
+        position: absolute;
+        bottom: 80%; /* Position above the circle */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 10px;
+        white-space: nowrap;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+
+    /* Tooltip on hovering over the link inside circle */
+    .circle-overlay a:hover::after {
+        position: absolute;
+        bottom: 120%; /* Position above the button */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+
+    /* Existing style for the link inside circle */
+    .circle-overlay a {
+        position: relative;
+        text-decoration: none;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+    }
+
+
+      .inner-sparc-header {
+          text-align: center;
+          font-size: 30px;
+          font-weight: bold;
+          margin-top: 40px;
+          color: #FF9132; 
+      }
+      .inner-sparc-desc {
+          text-align: justify;
+          font-size: 18px;
+          line-height: 1.6;
+          margin: 3.5%;
+          color: #333; 
+          margin-top: 10px; 
+          padding: 0 20px; 
+      }
+      .content-section {
+          display: flex;
+          align-items: stretch;
+          width: 100%; 
+          height: 50vh; 
+          margin: 0;
+      }
+
+      .left-image {
+          width: 50%;
+          height: 100%; 
+          object-fit: cover; 
+      }
+
+      .right-text {
+          padding: 5%;
+          background-color: #ff9933;
+          color: white;
+          width: 50%;
+          font-size: 18px;
+          text-align: justify;
+          line-height: 1.7;
+          display: flex;
+          flex-direction: column;
+          font-family: sans-serif;
+          justify-content: center;
+      }
+      .right-text p{
+        margin-bottom: 15px;
+      }
+      .learn-more-button {
+          margin-top: 20px;
+          align-self: center;
+          background-color: white;
+          color: #FF9132;
+          font-weight: bolder;
+          padding: 15px 150px;
+          border: none;
+          font-size: 15px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          text-transform: uppercase;
+      }
+      .learn-more-button:hover {
+          background-color: white;
+          color: #ff9933;
+      }
+
+      .contact-section {
+              display: flex;
+              margin-bottom: 2%;
+              justify-content: space-between;
+              color: white;
+          }
+          .contact-form {
+              width: 60%;
+              padding: 40px;
+              background-color: #1C7D38; 
+              color: white;
+          }
+          .contact-form h2{
+              font-size: 28px;
+              margin: 10px 20px;
+          }
+          .contact-form p{
+              margin: 10px 20px;
+              margin-top: -10;
+          }
+          .contact-form input[type="text"],
+          .contact-form input[type="email"],
+          .contact-form textarea {
+              width: 90%;
+              padding: 15px;
+              margin: 10px 20px;
+              border-radius: 5px;
+              border: none;
+              background-color: white;
+              color: black;
+          }
+          .contact-form button {
+              width: 50%;
+              padding: 15px;
+              margin: 10px auto;
+              background-color: white;
+              color: #1C7D38;
+              border: none;
+              font-size: 15px;
+              font-weight: bold;
+              cursor: pointer;
+              display: block;
+          }
+          .contact-form button:hover {
+              background-color: #cccccc;
+          }
+          .updates {
+              width: 40%;
+              padding: 50px;
+              line-height: 1.7;
+              color: black;
+          }
+
+          .updates h2 {
+              font-size: 28 px;
+              margin-top: -1%;
+              margin-bottom: 10px;
+              color: #FF9132;
+          }
+          .updates h3 {
+              font-size: 17px;
+              margin: 10px 0;
+              margin-bottom: -1%;
+          }
+          .updates p {
+              margin: 10px 0;
+              font-size: 13px;
+          }
+
+          .updates a {
+              color: #B2974D;
+              text-decoration: none;
+          }
+          .updates a:hover {
+              text-decoration: none;
+          }
+          .updates .social-icons img {
+              width: 20px;
+              height: 20px;
+              margin: 5px;
+              margin-top: -10px;
+          }
+          .view-more-button {
+              background-color: transparent;
+              color: #ff9933;
+              width: 50%;
+              font-weight: bold;
+              padding: 10px 30px;
+              margin-top: 2%;
+              border: 2px solid #FF9132;
+              font-size: 15px;
+              text-transform: uppercase;
+              cursor: pointer;
+              transition: background-color 0.3s, color 0.3s;
+          }
+          .view-more-button:hover {
+              background-color: #ff9933;
+              color: white;
+          }
+          .modal {
+                  display: none;
+                  position: fixed;
+                  z-index: 1000;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  justify-content: center;
+                  align-items: center;
+              }
+          .modal-content {
+              position: relative;
+              background-color: #fff;
+              padding: 30px;
+              border: 5px solid #cccccc;
+              border-radius: 8px;
+              font-size: 13px;
+              width: 300px;
+              font-weight: bold;
+              text-align: center;
+              color: black;
+          }
+          .modal img {
+              width: 30%;
+              height: auto;
+          }
+          .close-btn {
+              position: absolute; 
+              top: 10px;
+              right: 10px;
+              background-color: #cccccc;
+              color: white;
+              font-weight: bold;
+              border: none;
+              border-radius: 50%;
+              padding: 5px 10px;
+              cursor: pointer;
+              font-size: 16px;
+          }
+         footer {
+          color: black;
+          text-align: center;
+          padding: 20px 0;
+          margin-top: 20px;
+      }
+      .footer-img {
+          position: relative;
+          text-align: center;
+      }
+      .footer-img img {
+          width: 100%;
+          height: auto;
+          margin-bottom: -10px;
+      }
+      .footer-bottom {
+          margin-bottom: -50px;
+          background-color: white;
+          color: white;
+          padding: 10px 0;        
+      }
+      .footer-bottom p {
+          margin-bottom: 10px;
+          font-size: 1.1rem;
+          color: black;
+      }
+      .footer-bottom nav ul {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 20px;
+          margin-bottom: 40px;
+          text-transform: uppercase;
+      }
+      .footer-bottom nav ul li a {
+          text-decoration: none;
+      }
+      .footer-bottom address {
+          font-style: normal;
+          margin-bottom: 15px;
+          color: black;
+      }
+      .footer-bottom .copyright {
+          font-size: 0.8rem;
+      }
+      .active {
+        color: #1C7D38;
+        font-weight: bold;
+      }
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+    gap: 20px;
+    max-width: 100%;
+    padding: 20px;
+    margin: 50px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+
+}
+
+.service-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease; /* Smooth image transition */
+}
+.service-card:hover {
+    transform: scale(1.05); /* Slightly increase the card size */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.purple { background-color: #635DFF; }
+.green { background-color: #47B382; }
+.orange { background-color: #FFB347; }
+.blue { background-color: #6B6BCF; }
+
+.service-card h2 {
+    font-size: 1.5em;
+}
+
+.service-card p {
+    font-size: 1em;
+}
+
+.why-choose-us {
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto 40px; /* Center and add space below */
+    color: #333; /* Adjust color as needed */
+}
+
+.why-choose-us h2 {
+    font-size: 2em;
+    color: #635DFF; /* Match primary color or choose another */
+    margin-bottom: 10px;
+}
+
+.why-choose-us p {
+    font-size: 1.2em;
+    color: #555; /* Subtle color for paragraph */
+}
+.inner-sparc-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1C7D38;
+    margin-top: -1%;
+}
+
+.inner-sparc-header p {
+    font-size: 18px;
+    color: #333;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-left: 5% ;
+    margin-right: 5% ;
+}
+.featured-properties {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -2%;
+    padding: 40px 20px;
+
+}
+
+.featured-properties h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.property-link {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Keep text color consistent */
+}
+
+.property-card {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+
+.property-image {
+    position: relative;
+}
+
+.property-image img {
+    width: 100%;
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+}
+
+.labels {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    background-color: #007bff;
+    color: white;
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.label.featured { 
+  font-weight: bold;
+  background-color: #4b0082; }
+.label.open-house { background-color: #1e90ff; }
+.label.sale { 
+  font-weight: bold;
+  background-color: #FF4F4F; }
+
+.property-details {
+    padding: 10px;
+    text-align: left;
+}
+
+.property-details h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.property-details .price {
+    font-size: 1.2em;
+    color: #28a745;
+}
+
+.property-details .location {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.property-details .details-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.property-details .details-link:hover {
+    text-decoration: underline;
+}
+
+.overlay-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px; /* Space between icons */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+    /* Overlay icons for Favorites and Compare */
+    .icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+    .heart-icon:hover {
+        color: red;
+    }
+    .compare-icon:hover{
+        color: #33cc33;
+    }
+    .model:hover .overlay-icons {
+        opacity: 1;
+    }
+    .model {
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+        background-color: #1C7D38;
+        text-align: left;
+        padding: 3px;
+        margin: 0;
+        box-sizing: border-box;
+        transition: transform 0.2s ease; /* Smooth transition */
+    }
+    .model:hover {
+        transform: translateY(-10px); /* Moves model up slightly */
+    }
+
+/* Show overlay icons on hover */
+.property-card:hover .overlay-icons {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Icon styling */
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(51, 46, 46, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 8px;
+    color: white;
+    font-size: 25px;
+    transition: background-color 0.3s ease;
+    background-size: cover; /* Ensures the image fits properly */
+    background-position: center; /* Centers the image */
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.abovefooter {
+  border: none;
+  height: 5px;
+  background-color: #1C7D38; 
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 1200px) {
+    .property-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+    }
+}
+
+@media (max-width: 800px) {
+    .property-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .property-grid {
+        grid-template-columns: 1fr; /* 1 column for very small screens */
+    }
+}
+
+/* Floating Button */
+.custom-floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  padding: 15px 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Modal */
+.custom-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.custom-modal-content {
+  background: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.custom-close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+#customSavedList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+    </style>
+</head>
+
+
+<body>  
+<header>
+    <div class="logo"><img src="../Images/logo.png" alt="Logo"></div>
+    <nav>
+        <ul>
+            <li><a href="home.html" class="active">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="properties.html">PROPERTIES</a></li>
+            <li><a href="signup.html"><img src="../Images/usericon.png" alt="User Icon"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Overlayed Header and Buttons -->
+<div class="image-container">
+    <img src="../Images/filofam.png" alt="Home Image" class="home-image">
+    <h1 class="overlay-header">Find Your Dream Home Today</h1>
+    <p class="overlay-subheader">With Inner SPARC Realty Corporation</p>
+    <button class="inquire-button" onclick="location.href='contact.html'">INQUIRE NOW</button>
+    <button class="explore-button" onclick="location.href='properties.html'">EXPLORE PROPERTIES</button>
+</div>
+
+
+
+
+<!-- logo with header and description -->
+<div class="image-container">
+    <img src="../Images/logo.png" class="logo-image" alt="Inner SPARC Logo">
+    <div class="inner-sparc-header">
+        <h1>Your Future Awaits at Inner SPARC – Start with a Tour!</h1>
+        <p>Discover each of our three exclusive subdivisions and experience the inviting lifestyle that Inner SPARC has to offer. Navigate through each space and find your dream home today! See below.</p>
+    </div>
+</div>
+
+
+<!-- subdivision images with overlay text -->
+<div class="image-container">
+    <div class="subd-container">
+        <img src="../Images/pleasantfields.png" class="subd-image">
+        <div class="overlay-text">PLEASANT FIELDS</div>
+        <div class="circle-overlay">
+            <a href="pleasant.html">EXPLORE</a>
+        </div>
+    </div>
+    <div class="subd-container">
+        <img src="../Images/elisahomes.jpg" class="subd-image">
+        <div class="overlay-text">ELISA HOMES</div>
+        <div class="circle-overlay">
+            <a href="elisa.html">EXPLORE</a>
+        </div>
+    </div>
+    <div class="subd-container">
+        <img src="../Images/minami.jpg" class="subd-image">
+        <div class="overlay-text">MINAMI RESIDENCES</div>
+        <div class="circle-overlay">
+            <a href="minami.html">EXPLORE</a>
+        </div>
+    </div>
+</div>
+
+  
+
+
+<div class="why-choose-us">
+    <h2>Why Choose Us?</h2>
+    <p>At Inner Sparc Realty Services, we are dedicated to making your real estate experience as smooth and enjoyable as possible. Here’s why our clients trust us:</p>
+</div>
+<div class="services-container">
+    <div class="service-card purple">
+        <img src="../Images/expert.jpg" alt="Expert Local Knowledge">
+        <h2>Expert Local Knowledge</h2>
+        <p>Our deep understanding of the local market ensures you receive the best advice and opportunities tailored to your needs.</p>
+    </div>
+    <div class="service-card green">
+        <img src="../Images/personalized.jpg" alt="Personalized Service">
+        <h2>Personalized Service</h2>
+        <p>We provide customized solutions and attentive support, focusing on your specific goals and preferences.</p>
+    </div>
+    <div class="service-card orange">
+        <img src="../Images/trusted.jpg" alt="Trusted by the Community">
+        <h2>Trusted by the Community</h2>
+        <p>We’ve earned the trust of countless homeowners and investors through our commitment to excellence and integrity.</p>
+    </div>
+    <div class="service-card blue">
+        <img src="../Images/transparent.jpg" alt="Transparent & Efficient">
+        <h2>Transparent & Efficient</h2>
+        <p>We streamline the process with clear communication and effective strategies to make your journey stress-free.</p>
+    </div>
+</div>
+
+<!-- header and description -->
+<p class="inner-sparc-header">INNER SPARC</p>
+<p class="inner-sparc-desc">
+    Inner SPARC Realty is a real estate investment company that specializes in helping clients find and acquire profitable real estate properties. Our team is made up of experienced real estate investors, brokers, and property managers who have a deep understanding of the market and the various investment opportunities available.
+</p>
+
+<div class="content-section">
+    <img src="../Images/innr.jpg" alt="Aerial View" class="left-image">
+    <div class="right-text">
+        <p>
+            Inner SPARC Realty Corporation began as a small dream and quickly grew into a thriving business, thanks to the trust of our valued clients. Founded on October 14, 2019, by Licensed Real Estate Broker Gabriel Villamor Libacao Jr., REB, and Mr. Erwin G. Baguioan, Inner SPARC transitioned from a humble sole proprietorship into a corporation driven by a passion for helping Filipinos achieve homeownership.
+        </p>
+       <a href="about.html"> <button class="learn-more-button">Learn More</button></a>
+    </div>
+</div>
+
+ <!-- Contact section -->
+    <div class="contact-section" id="contact-section">
+    <!-- Modal Structure -->
+    <div class="modal" id="messageModal">
+        <div class="modal-content">
+            <img src="../Images/mssg.png" alt="Message Sent">
+            <p>Your message has been successfully sent!</p>
+            <button class="close-btn" onclick="closeModal()">X</button>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h2>SEND US A MESSAGE</h2>
+        <p>What can we help you with?</p>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="text" placeholder="Phone Number">
+        <textarea placeholder="Your Message" rows="5"></textarea>
+        <button onclick="showModal()">SEND</button>
+    </div>
+
+        <!-- Updates Section -->
+        <div class="updates">
+            <h2>GET LATEST UPDATES</h2>
+            <h3>Business Hours</h3>
+            <p>Monday – Friday: 9am – 5pm<br>Saturday: 10am – 3pm<br>Sunday: Closed</p>
+            <hr>
+            <h3>Contacts</h3>
+            <p>(046)458-0706<br>0966-953-3188 (Globe/TM)<br>0999-994-3304 (Smart/T&T)</p>
+            <hr>
+            <h3>Social Media</h3>
+            <p>innersparcrealtyservices@gmail.com</p>
+            <div class="social-icons">
+                <a href="#"><img src="../Images/fb.png"></a>
+                <a href="#"><img src="../Images/ig.png"></a>
+                <a href="#"><img src="../Images/in.png"></a>
+                <a href="#"><img src="../Images/yt.png"></a>
+                <a href="#"><img src="../Images/gmail.png"></a>
+            </div>
+
+            <a href="contact.html"><button class="view-more-button">VIEW MORE</button></a>
+        </div>
+    </div>
+
+    <div class="featured-properties">
+        <h2>Featured Properties</h2>
+        <div class="property-grid">
+            <!-- Property 1 -->
+            <div class="property-card">
+                <a href="lincoln.html" class="property-link">
+                    <div class="property-image">
+                        <img src="../Images/lincoln.png" alt="Property 1">
+                        <div class="labels">
+                            <span class="label featured">FEATURED</span>
+                            <span class="label sale">SALE</span>
+                        </div>
+                        <div class="overlay-icons">
+                            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥</a>
+                            <a href="properties.html" class="icon compare-icon" title="Compare">⇄</a>
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <h3>Lincoln</h3>
+                        <p class="price">₱3,568,317</p>
+                        <p class="location">
+                            <i class="fas fa-map-marker-alt"></i> Brgy. Santol, Tanza, Cavite
+                        </p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Property 2 -->
+            <div class="property-card">
+                <a href="pearl.html" class="property-link">
+                    <div class="property-image">
+                        <img src="../Images/pearl.jpg" alt="Property 2">
+                        <div class="labels">
+                            <span class="label featured">FEATURED</span>
+                            <span class="label sale">SALE</span>
+                        </div>
+                        <div class="overlay-icons">
+                            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥</a>
+                            <a href="properties.html" class="icon compare-icon" title="Compare">⇄</a>
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <h3>Pearl</h3>
+                        <p class="price">₱6,562,715</p>
+                        <p class="location">
+                            <i class="fas fa-map-marker-alt"></i> Molino IV, Bacoor, Cavite
+                        </p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Property 3 -->
+            <div class="property-card">
+                <a href="hanna.html" class="property-link">
+                    <div class="property-image">
+                        <img src="../Images/hanna.jpg" alt="Property 3">
+                        <div class="labels">
+                            <span class="label featured">FEATURED</span>
+                            <span class="label sale">SALE</span>
+                        </div>
+                        <div class="overlay-icons">
+                            <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥</a>
+                            <a href="properties.html" class="icon compare-icon" title="Compare">⇄</a>
+                        </div>
+                    </div>
+                    <div class="property-details">
+                        <h3>Hanna</h3>
+                        <p class="price">₱5,500,500</p>
+                        <p class="location">
+                            <i class="fas fa-map-marker-alt"></i> Brgy. Santiago, General Trias, Cavite
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="customFloatingButton" class="custom-floating-btn" onclick="toggleCustomModal()">
+        ❤️ Favorites
+      </div>
+      
+      <!-- Modal -->
+      <div id="customModal" class="custom-modal">
+        <div class="custom-modal-content">
+          <span class="custom-close" onclick="toggleCustomModal()">&times;</span>
+          <h2>Your Saved Items</h2>
+          <ul id="customSavedList">
+            <li>No items saved yet!</li>
+          </ul>
+        </div>
+      </div>
+      
+
+
+</div>
+
+    <hr class="abovefooter">
+
+<footer>
+    <div class="footer-bottom">
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="termsandcondition.html">Terms and Conditions</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <address>
+            INNER SPARC REALTY SERVICES<br>
+            Blk 26 Lot 4 Phase 3, Avida Residences Sta. Catalina, Brgy. Salawag,<br>
+            Dasmariñas, Cavite, Philippines
+        </address>
+        <p>&copy; 2024 Inner SPARC Realty Corporation | Powered by Inner SPARC Realty Corporation</p>  
+    </div>
+</footer>
+
+</body>
+
+<script>
+
+    function scrollToContact() {
+        document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+        function showModal() {
+            document.getElementById("messageModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("messageModal").style.display = "none";
+        }
+
+// Toggle modal visibility
+function toggleCustomModal() {
+  const modal = document.getElementById('customModal');
+  modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+</script>
+</html>

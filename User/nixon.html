@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Nixon</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../Images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F3F2EF;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+    .logo img {
+      width: 100px;
+      height: auto;
+      margin-left: 40px;
+    }
+    nav ul {
+      list-style-type: none;
+      margin-right: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li {
+      margin-left: 50px;
+    }
+    nav ul li a {
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li a img {
+      width: 35px;
+      height: 35px;
+      margin-right: 5px;
+    }
+    nav ul li a:hover {
+      text-decoration: none;
+    }
+    .active {
+      color: #B2974D;
+      font-weight: bold;
+    }
+
+    .property-card_a {
+      width: 80%;
+      max-width: 1200px;
+      background: white;
+      border: 1px solid #ddd;
+      padding: 16px;
+      margin: 20px auto;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+
+    .gallery {
+      flex: 1 1 55%;
+      position: relative;
+    }
+
+    .main-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .nav-btn.prev-btn {
+      left: 8px;
+    }
+
+    .nav-btn.next-btn {
+      right: 8px;
+    }
+
+
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .thumb {
+      width: 19%;
+      cursor: pointer;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+
+    /* Hover effect for thumbnails */
+    .thumb:hover {
+      transform: scale(1.1);
+      transition: transform 0.4s ease-out;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
+      border: 2px solid #FF9132; /* Highlights the thumbnail */
+    }
+
+    .details-actions {
+      flex: 1 1 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .details {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 16px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .action-btn {
+      flex: 1;
+      margin: 0 8px;
+      padding: 10px;
+      background: #222689;
+      color: white;
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .action-btn:hover {
+      background: #0056b3;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+      gap: 10px; /* Adds space between the list items */
+      padding: 0;
+      list-style-type: none;
+    }
+
+    ul li {
+      display: flex;
+      align-items: center;
+    }
+
+    ul li img {
+      width: 20px; /* Set the size of the icon */
+      height: 20px; /* Set the height of the icon */
+      margin-right: 2px; /* Space between the icon and text */
+      vertical-align: middle; /* Align icon vertically with the text */
+    }
+    .home_{
+        font-size: 20px;
+    }
+    .property-header {
+    text-align: center;
+    margin: 20px 0; /* Add spacing around the header */
+    }
+
+    .property-header h1 {
+    font-size: 30px;
+    color: #222689;
+    margin-bottom: 10px;
+    }
+
+    .property-header .info-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 15px;
+    color: #666;
+    }
+
+    .property-header .info {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between the icon and the text */
+    }
+
+    .property-header .info img {
+    width: 16px; /* Icon size */
+    height: 16px;
+    }
+
+
+    .navigation-tabs {
+    width: 80%;
+    margin: 20px auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 3%;
+  }
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .tab {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    color: black;
+  }
+  .tab.active {
+    font-weight: bold;
+    color: #222689;
+    border-bottom: 3px solid #222689;
+  }
+  .tab-content {
+    padding: 20px;
+  }
+  .tab-pane {
+    display: none;
+  }
+  .tab-pane.active {
+    display: block;
+  }
+
+  .tab-content h2{
+    color: black;
+  }
+
+  .tab-content p{
+    color:#666 ;
+    text-align: justify;
+    font-size: 14px;
+  }
+
+  .ul-tab {
+      color: #000;
+      display: grid;
+      font-weight: normal;
+      grid-template-columns: repeat(4, 1fr); /* Creates two equal columns */
+      gap: 10px; /* Adds space between the list items */
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .ul-tab li {
+      display: flex;
+      align-items: center;
+    }
+
+    .ul-tab li img {
+      width: 20px; /* Set the size of the icon */
+      height: 20px; /* Set the height of the icon */
+      margin-right: 20px; /* Space between the icon and text */
+      vertical-align: middle; /* Align icon vertically with the text */
+    }
+
+    .floor-plan-images {
+      display: flex;
+      justify-content: center; /* Center the images horizontally */
+      gap: 30px; /* Add space between the images */
+      margin-top: 20px;
+    }
+
+    .floor-plan-images img {
+      width: 30%; /* Adjust the size of the images (each takes about half the container's width) */
+      border: 1px solid #ddd; /* Optional: Add a border to the images */
+      border-radius: 8px; /* Optional: Rounded corners */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+
+
+.property-details {
+    padding: 10px;
+    text-align: left; /* Ensure left alignment for all details */
+    margin-top: -4%;
+}
+
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns */
+    gap: 30px; /* Space between cards */
+}
+
+.property-card {
+    background-color: #f5f5f5;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stack image and details vertically */
+}
+
+.property-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.property-image {
+    position: relative;
+}
+
+.property-image img {
+    width: 100%;
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+}
+
+.labels {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    background-color: #007bff;
+    color: white;
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.label.featured { 
+  font-weight: bold;
+  background-color: #4b0082; }
+.label.open-house { background-color: #1e90ff; }
+.label.sale { 
+  font-weight: bold;
+  background-color: #FF4F4F; }
+
+.property-details {
+    padding: 10px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.property-details .price {
+    font-size: 1.2em;
+    color: #28a745;
+}
+
+.property-details .location {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.property-details h3 {
+    display: inline; /* Make the title inline to align with the link */
+    font-size: 1.5em;
+    color: #333;
+    margin-right: 50%;
+    vertical-align: middle; /* Aligns the title with the link vertically */
+}
+
+.property-details .nix{
+    margin-right: 55%;
+}
+
+.property-details .details-link {
+    color: #222689;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    vertical-align: middle;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.property-details .details-link:hover {
+    color: #FF9132;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+.property-details .details-link:hover .tooltip-property {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+.property-details .details-link .tooltip-property {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 25px;
+    left: 40%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    margin-left: 1%; /* Matching margin with .subd1-head */
+    width: fit-content; /* Adjust width based on content */
+    color: #1C7D38;
+    font-size: 15px;
+}
+
+.overlay-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px; /* Space between icons */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+    /* Overlay icons for Favorites and Compare */
+    .icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+    .heart-icon:hover {
+        color: red;
+    }
+    .compare-icon:hover{
+        color: #33cc33;
+    }
+    .model:hover .overlay-icons {
+        opacity: 1;
+    }
+    .model {
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+        background-color: #1C7D38;
+        text-align: left;
+        padding: 3px;
+        margin: 0;
+        box-sizing: border-box;
+        transition: transform 0.2s ease; /* Smooth transition */
+    }
+    .model:hover {
+        transform: translateY(-10px); /* Moves model up slightly */
+    }
+
+/* Show overlay icons on hover */
+.property-card:hover .overlay-icons {
+    opacity: 1;
+    visibility: visible;
+}
+/* Icon styling */
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(51, 46, 46, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 8px;
+    color: white;
+    font-size: 25px;
+    transition: background-color 0.3s ease;
+    background-size: cover; /* Ensures the image fits properly */
+    background-position: center; /* Centers the image */
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.additional-image {
+    position: relative;
+    width: 82.6%; /* Same width as the features-amenities-container */
+    margin: 20px auto; /* Center the image */
+    padding: 20px 0; /* Add vertical padding for spacing */
+    margin-top: -2.7%;
+}
+
+.additional-image img {
+    width: 100%;
+    height: 500px;
+    display: block;
+    opacity: 90%;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(34, 38, 137, 0.8); /* Semi-transparent #222689 */
+    color: white;
+    font-size: 17px;
+    padding: 20px;
+    width: 40%; /* Adjust the width as necessary */
+    text-align: justify;
+}
+
+.property-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.property-container h1 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 2%;
+
+}
+
+.property-container p {
+  font-size: 16px;
+  color: #555;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+
+.property-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.property-card- {
+  background-color: #222689;
+  color: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+  text-align: center;
+  width: 25%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-card- img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.property-card- h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.property-card- p {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.property-card- button {
+  background-color: #FF9132;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.property-card- button:hover {
+  background-color: #d95d1a;
+}
+footer {
+        color: black;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+    }
+    .footer-img {
+        position: relative;
+        text-align: center;
+    }
+    .footer-img img {
+        width: 100%;
+        height: auto;
+        margin-bottom: -10px;
+    }
+    .footer-bottom {
+        margin-bottom: -50px;
+        background-color: white;
+        color: white;
+        padding: 10px 0;        
+    }
+    .footer-bottom p {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        color: black;
+    }
+    .footer-bottom nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+    }
+    .footer-bottom nav ul li a {
+        text-decoration: none;
+    }
+    .footer-bottom address {
+        font-style: normal;
+        margin-bottom: 15px;
+        color: black;
+    }
+    .footer-bottom .copyright {
+        font-size: 0.8rem;
+    }
+    .active {
+      color: #1C7D38;
+      font-weight: bold;
+    }
+    .abovefooter {
+  border: none;
+  height: 5px;
+  background-color: #1C7D38; 
+}
+
+
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="logo"><img src="../Images/logo.png" alt="Logo"></div>
+  <nav>
+    <ul>
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="properties.html">PROPERTIES</a></li>
+      <li><a href="signup.html"><img src="../Images/usericon.png" alt="User Icon"></a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="property-header">
+    <h1>Nixon</h1>
+    <div class="info-container">
+      <div class="info">
+        <img src="../Images/location.png" alt="Location Icon">
+        <span>Pleasantfields</span>
+      </div>
+      <div class="info">
+        <img src="../Images/home-icon.png" alt="House Icon">
+        <span>2 Bedrooms</span>
+      </div>
+      <div class="info">
+        <img src="../Images/price-icon.png" alt="Price Icon">
+        <span>₱2,890,947</span>
+      </div>
+    </div>
+  </div>
+  
+<div class="property-card_a">
+  <div class="gallery">
+    <button class="nav-btn prev-btn">&lt;</button>
+    <div class="main-image">
+      <img src="../Images/nixon1.png" alt="Main View">
+    </div>
+    <button class="nav-btn next-btn">&gt;</button>
+
+    <div class="thumbnails">
+      <img src="../Images/nixon2.png" alt="Thumbnail 1" class="thumb">
+      <img src="../Images/nixon3.png" alt="Thumbnail 2" class="thumb">
+      <img src="../Images/nixon4.png" alt="Thumbnail 3" class="thumb">
+      <img src="../Images/nixon5.png" alt="Thumbnail 4" class="thumb">
+      <img src="../Images/nixon6.png" alt="Thumbnail 5" class="thumb">
+    </div>
+  </div>
+
+  <div class="details-actions">
+    <div class="details">
+      <p><strong>Price:</strong>₱2,890,947</p>
+      <p><strong>Floor Area:</strong> 55sqm</p>
+      <p class="home_"><strong>House Features</strong></p>
+      <ul>
+        <li><img src="../Images/bedroom.png" alt="Bed Room Icon"> Bed Room</li>
+        <li><img src="../Images/toilet.png" alt="Toilet & Bath Room Icon"> Toilet & Bath Room</li>
+        <li><img src="../Images/car.png" alt="Carport Icon"> Carport</li>
+        <li><img src="../Images/living.png" alt="Living Room Icon"> Living Room</li>
+        <li><img src="../Images/dining.png" alt="Dining Room Icon"> Dining Room</li>
+        <li><img src="../Images/kitchen.png" alt="Kitchen Icon"> Kitchen</li>
+        <li><img src="../Images/porch.webp" alt="Porch Icon"> Porch</li>
+        <li><img src="../Images/service.png" alt="Service Area Icon"> Service Area</li>
+      </ul>
+    </div>
+
+    <div class="actions">
+      <a href="signup.html" class="action-btn">Add to Favorites</a>
+      <a href="properties.html" class="action-btn">Compare</a>
+    </div>  
+  </div>
+</div>
+
+<div class="navigation-tabs">
+  <div class="tabs">
+    <button class="tab active" data-tab="description">DESCRIPTION</button>
+    <button class="tab" data-tab="features">FEATURES</button>
+    <button class="tab" data-tab="location">LOCATION</button>
+    <button class="tab" data-tab="house-tour">HOUSE TOUR</button>
+    <button class="tab" data-tab="floor-plans">FLOOR PLANS</button>
+    <button class="tab" data-tab="other-models">OTHER MODELS</button>
+  </div>
+  <div class="tab-content">
+    <div id="description" class="tab-pane active">
+      <h2>Description</h2>
+      <p style="color: #1C7D38;">₱2,890,947</p>
+      <p>The NIXON house model combines modern design with functionality, offering a spacious living area, 
+        well-lit bedrooms, and a seamless kitchen-dining layout—perfect for families or individuals seeking
+         comfort and versatility.
+      </p>
+
+    </div>
+    
+    <div id="features" class="tab-pane">
+      <h2>Features</h2>
+      <ul class="ul-tab">
+        <li><img src="../Images/bedroom.png" alt="Bed Room Icon"> Bed Room</li>
+        <li><img src="../Images/toilet.png" alt="Toilet & Bath Room Icon"> Toilet & Bath Room</li>
+        <li><img src="../Images/car.png" alt="Carport Icon"> Carport</li>
+        <li><img src="../Images/living.png" alt="Living Room Icon"> Living Room</li>
+        <li><img src="../Images/dining.png" alt="Dining Room Icon"> Dining Room</li>
+        <li><img src="../Images/kitchen.png" alt="Kitchen Icon"> Kitchen</li>
+        <li><img src="../Images/porch.webp" alt="Porch Icon"> Porch</li>
+        <li><img src="../Images/service.png" alt="Service Area Icon"> Service Area</li>
+      </ul>
+    </div>
+
+    <div id="location" class="tab-pane">
+      <h2>Location</h2>
+      <p>Pleasantfields, a peaceful and accessible community that provides a safe environment for families.</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.606238306041!2d120.86953357486819!3d14.378953486081592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33962b09141bfee5%3A0x23ebcedfe570f194!2sPleasantfields!5e1!3m2!1sen!2sph!4v1731823790864!5m2!1sen!2sph"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+    <div id="house-tour" class="tab-pane">
+      <h2>House Tour</h2>
+      <p>Take a guided tour of the house and explore its layout.</p>
+      <div style="width: 100%; max-width: 100%; margin: 0 auto;">
+        <iframe 
+            src="https://my.matterport.com/show/?m=uTWBB7ped9P" 
+            width="100%" 
+            height="480" 
+            frameborder="0" 
+            allowfullscreen 
+            allow="vr">
+        </iframe>
+      </div>
+    </div>
+
+    <div id="floor-plans" class="tab-pane">
+      <h2>Floor Plans</h2>
+      <div class="floor-plan-images">
+        <img src="../Images/floor-plan1.webp" alt="Floor Plan 1">
+        <img src="../Images/floor-plan2.webp" alt="Floor Plan 2">
+      </div>
+    </div>
+
+    <div id="other-models" class="tab-pane">
+      <div class="explore-header">
+        <h2>More Models</h2>
+        <p>These are the other models you might like.</p>
+      </div>
+      <div class="featured-properties">
+        <div class="property-grid">
+            <!-- Property 2 -->
+
+            <div class="property-card">
+              <a href="lincoln.html" class="property-link">
+                  <div class="property-image">
+                      <img src="../Images/lincoln.jpg" alt="Property 2">
+                      <div class="labels">
+                          <span class="label sale">SALE</span>
+                      </div>
+                      <div class="overlay-icons">
+                          <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥</a>
+                          <a href="properties.html" class="icon compare-icon" title="Compare">⇄</a>
+                      </div>
+                  </div>
+                  <div class="property-details">
+                      <h3>Lincoln</h3>
+                      <p class="price">₱3,568,317</p>
+                      <p class="location">
+                          <i class="fas fa-map-marker-alt"></i> Brgy. Santol, Tanza, Cavite
+                      </p>
+                  </div>
+              </a>
+          </div>
+            
+            <!-- Property 3 -->
+            <div class="property-card">
+              <a href="kennedy.html" class="property-link">
+                  <div class="property-image">
+                      <img src="../Images/kennedy.png" alt="Property 2">
+                      <div class="labels">
+                          <span class="label sale">SALE</span>
+                      </div>
+                      <div class="overlay-icons">
+                          <a href="signup.html" class="icon heart-icon" title="Add to Favorites">♥</a>
+                          <a href="properties.html" class="icon compare-icon" title="Compare">⇄</a>
+                      </div>
+                  </div>
+                  <div class="property-details">
+                      <h3>Kennedy</h3>
+                      <p class="price">₱3,086,834</p>
+                      <p class="location">
+                          <i class="fas fa-map-marker-alt"></i> Brgy. Santol, Tanza, Cavite
+                      </p>
+                  </div>
+              </a>
+          </div>
+
+            
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="property-container">
+  <h1>Explore More Communities</h1>
+  <div class="property-cards">
+    <div class="property-card-">
+      <img src="../Images/ple.webp" alt="Camella Tarlac">
+      <h3>Pleasantfields</h3>
+      <p>Santol, Tanza Cavite</p>
+      <a href="pleasant.html">
+        <button>Learn More</button>
+      </a>
+    </div>
+    <div class="property-card-">
+      <img src="../Images/elisapic.png" alt="Camella Pampanga">
+      <h3>Elisa Homes</h3>
+      <p>Molino 4, Bacoor Cavite</p>
+      <a href="elisa.html">
+        <button>Learn More</button>
+      </a>
+    </div>
+    <div class="property-card-">
+      <img src="../Images/minami_b.png" alt="Camella Urdaneta">
+      <h3>Minami Residences</h3>
+      <p>Santiago, General Trias, Cavite</p>
+      <a href="minami.html">
+        <button>Learn More</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <hr class="abovefooter">
+
+  <div class="footer-bottom">
+      <nav>
+          <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="termsandcondition.html">Terms and Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+      </nav>
+      <address>
+          INNER SPARC REALTY SERVICES<br>
+          Blk 26 Lot 4 Phase 3, Avida Residences Sta. Catalina, Brgy. Salawag,<br>
+          Dasmariñas, Cavite, Philippines
+      </address>
+      <p>&copy; 2024 Inner SPARC Realty Corporation | Powered by Inner SPARC Realty Corporation</p>  
+  </div>
+</footer>
+
+<script>
+  const mainImage = document.querySelector('.main-image img');
+  const thumbnails = document.querySelectorAll('.thumb');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+
+  let currentImageIndex = 0;
+  const images = ['../Images/nixon2.png', '../Images/nixon3.png', '../Images/nixon4.png', '../Images/nixon5.png', '../Images/nixon6.png'];
+
+  function updateMainImage(index) {
+    mainImage.src = images[index];
+  }
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      currentImageIndex = index;
+      updateMainImage(index);
+    });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    updateMainImage(currentImageIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    updateMainImage(currentImageIndex);
+  });
+  const tabs = document.querySelectorAll('.tab');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and panes
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+
+      // Add active class to the clicked tab and corresponding pane
+      tab.classList.add('active');
+      const target = document.getElementById(tab.dataset.tab);
+      target.classList.add('active');
+    });
+  });
+
+</script>
+</body>
+</html>
